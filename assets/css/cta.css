@@ -1,0 +1,154 @@
+/* =====================================================
+                    CTA SECTION
+===================================================== */
+
+.cta-section {
+  padding: 70px 0;
+  background: #ffffff;
+}
+
+/* ==========================================
+            CTA WRAPPER
+========================================== */
+
+.cta-wrapper {
+  background: #72000e;
+  border-radius: 20px;
+  padding: 50px 60px;
+  box-shadow: 0 15px 40px rgba(114, 0, 14, 0.2);
+}
+
+/* ==========================================
+            CTA CONTENT
+========================================== */
+
+.cta-content h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.cta-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 650px;
+  margin: 0;
+}
+
+/* ==========================================
+            CTA BUTTON
+========================================== */
+
+.cta-button {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Button Daftar */
+
+.btn-daftar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 180px;
+  height: 52px;
+
+  background: #ffffff;
+  color: #72000e;
+
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 10px;
+
+  transition: 0.3s;
+}
+
+.btn-daftar:hover {
+  background: #f3f3f3;
+  color: #72000e;
+  transform: translateY(-3px);
+}
+
+/* Button Kontak */
+
+.btn-kontak {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 180px;
+  height: 52px;
+
+  border: 2px solid #ffffff;
+
+  color: #ffffff;
+  background: transparent;
+
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 10px;
+
+  transition: 0.3s;
+}
+
+.btn-kontak:hover {
+  background: #ffffff;
+  color: #72000e;
+  transform: translateY(-3px);
+}
+
+/* ==========================================
+            RESPONSIVE
+========================================== */
+
+@media (max-width: 991px) {
+  .cta-wrapper {
+    padding: 40px 35px;
+    text-align: center;
+  }
+
+  .cta-content {
+    margin-bottom: 30px;
+  }
+
+  .cta-content h2 {
+    font-size: 30px;
+  }
+
+  .cta-button {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 60px 0;
+  }
+
+  .cta-wrapper {
+    padding: 35px 25px;
+  }
+
+  .cta-content h2 {
+    font-size: 26px;
+  }
+
+  .cta-content p {
+    font-size: 15px;
+  }
+
+  .cta-button {
+    flex-direction: column;
+  }
+
+  .btn-daftar,
+  .btn-kontak {
+    width: 100%;
+  }
+}

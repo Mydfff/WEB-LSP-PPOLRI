@@ -1,0 +1,264 @@
+/* =====================================================
+                    FAQ SECTION
+===================================================== */
+
+.faq-section {
+  padding: 120px 0;
+  background: #ffffff;
+}
+
+/* ==========================================
+            SECTION TITLE
+========================================== */
+
+.section-title {
+  margin-bottom: 60px;
+}
+
+.section-title h2 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #212529;
+  margin-bottom: 15px;
+}
+
+.title-line {
+  width: 90px;
+  height: 4px;
+  background: #72000e;
+  border-radius: 50px;
+  margin-bottom: 20px;
+}
+
+.section-title p {
+  max-width: 620px;
+  color: #6c757d;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* ==========================================
+            ACCORDION
+========================================== */
+
+.faq-accordion .accordion-item {
+  border: none;
+
+  border-radius: 12px !important;
+
+  overflow: hidden;
+
+  margin-bottom: 18px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.faq-accordion .accordion-button {
+  background: #ffffff;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  color: #212529;
+
+  padding: 22px 25px;
+
+  box-shadow: none;
+}
+
+.faq-accordion .accordion-button:focus {
+  box-shadow: none;
+
+  border: none;
+}
+
+.faq-accordion .accordion-button:not(.collapsed) {
+  background: #72000e;
+
+  color: #ffffff;
+}
+
+.faq-accordion .accordion-button::after {
+  filter: brightness(0);
+}
+
+.faq-accordion .accordion-button:not(.collapsed)::after {
+  filter: brightness(100);
+}
+
+.faq-accordion .accordion-body {
+  background: #ffffff;
+
+  color: #6c757d;
+
+  line-height: 1.9;
+
+  padding: 22px 25px;
+}
+
+/* ==========================================
+            CONTACT CARD
+========================================== */
+
+.faq-contact-card {
+  background: #ffffff;
+
+  border-left: 5px solid #72000e;
+
+  border-radius: 15px;
+
+  padding: 28px 25px;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+  text-align: center;
+}
+
+.faq-icon {
+  width: 60px;
+
+  height: 60px;
+
+  margin: 0 auto 18px;
+
+  background: #72000e;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.faq-icon i {
+  font-size: 28px;
+
+  color: #ffffff;
+}
+
+.faq-contact-card h4 {
+  font-size: 22px;
+
+  font-weight: 700;
+
+  color: #212529;
+
+  margin-bottom: 12px;
+}
+
+.faq-contact-card p {
+  font-size: 15px;
+
+  color: #6c757d;
+
+  line-height: 1.7;
+
+  margin-bottom: 22px;
+}
+
+.btn-faq-contact {
+  display: inline-block;
+
+  background: #72000e;
+
+  color: #ffffff;
+
+  padding: 10px 24px;
+
+  border-radius: 8px;
+
+  text-decoration: none;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+.btn-faq-contact:hover {
+  background: #8f0012;
+
+  color: #ffffff;
+
+  transform: translateY(-2px);
+}
+
+/* ==========================================
+            BUTTON
+========================================== */
+
+.btn-faq-contact {
+  display: inline-block;
+
+  background: #ffffff;
+
+  color: #72000e;
+
+  padding: 14px 32px;
+
+  border-radius: 8px;
+
+  text-decoration: none;
+
+  font-weight: 600;
+
+  transition: 0.35s;
+}
+
+.btn-faq-contact:hover {
+  background: #f3f3f3;
+
+  color: #72000e;
+
+  transform: translateY(-3px);
+}
+
+/* ==========================================
+            RESPONSIVE
+========================================== */
+
+@media (max-width: 991px) {
+  .faq-section {
+    padding: 90px 0;
+  }
+
+  .section-title {
+    margin-bottom: 45px;
+  }
+
+  .faq-contact-card {
+    margin-top: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-section {
+    padding: 70px 0;
+  }
+
+  .section-title h2 {
+    font-size: 32px;
+  }
+
+  .section-title p {
+    font-size: 15px;
+  }
+
+  .faq-accordion .accordion-button {
+    font-size: 16px;
+
+    padding: 18px 20px;
+  }
+
+  .faq-contact-card {
+    padding: 35px 25px;
+  }
+
+  .faq-contact-card h4 {
+    font-size: 22px;
+  }
+}

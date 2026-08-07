@@ -1,0 +1,205 @@
+/* =====================================================
+                WHY CHOOSE US SECTION
+===================================================== */
+
+.why-section {
+  padding: 120px 0;
+
+  background: #f8f9fa;
+}
+
+/* ===================================
+        SECTION TITLE
+=================================== */
+
+.section-title {
+  max-width: 760px;
+
+  margin: 0 auto 70px;
+}
+
+.section-subtitle {
+  display: inline-block;
+
+  padding: 8px 20px;
+
+  background: #72000e;
+
+  color: #fff;
+
+  border-radius: 30px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
+
+  margin-bottom: 18px;
+}
+
+.section-heading {
+  font-size: 42px;
+
+  font-weight: 700;
+
+  color: #212529;
+
+  margin-bottom: 18px;
+}
+
+.section-description {
+  color: #6c757d;
+
+  font-size: 17px;
+
+  line-height: 1.8;
+}
+
+/* ===================================
+            CARD
+=================================== */
+
+.why-card {
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  padding: 40px 28px;
+
+  text-align: center;
+
+  height: 100%;
+
+  border: 1px solid #e8e8e8;
+
+  transition: 0.35s ease;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.why-card:hover {
+  transform: translateY(-10px);
+
+  background: #72000e;
+
+  border-color: #72000e;
+
+  box-shadow: 0 20px 40px rgba(114, 0, 14, 0.25);
+}
+
+/* ===================================
+            ICON
+=================================== */
+
+.why-icon {
+  width: 85px;
+
+  height: 85px;
+
+  margin: 0 auto 25px;
+
+  border-radius: 50%;
+
+  background: #f5f5f5;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  transition: 0.35s;
+}
+
+.why-card:hover .why-icon {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.why-icon i {
+  font-size: 38px;
+
+  color: #72000e;
+
+  transition: 0.35s;
+}
+
+.why-card:hover .why-icon i {
+  color: #ffffff;
+}
+
+/* ===================================
+            TITLE
+=================================== */
+
+.why-card h4 {
+  font-size: 22px;
+
+  font-weight: 700;
+
+  color: #212529;
+
+  margin-bottom: 18px;
+
+  transition: 0.35s;
+}
+
+.why-card:hover h4 {
+  color: #ffffff;
+}
+
+/* ===================================
+        DESCRIPTION
+=================================== */
+
+.why-card p {
+  color: #6c757d;
+
+  line-height: 1.8;
+
+  font-size: 15px;
+
+  margin-bottom: 0;
+
+  transition: 0.35s;
+}
+
+.why-card:hover p {
+  color: #ffffff;
+}
+
+/* ===================================
+        RESPONSIVE
+=================================== */
+
+@media (max-width: 991px) {
+  .section-heading {
+    font-size: 34px;
+  }
+
+  .section-description {
+    font-size: 16px;
+  }
+
+  .why-card {
+    padding: 35px 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .why-section {
+    padding: 90px 0;
+  }
+
+  .section-heading {
+    font-size: 28px;
+  }
+
+  .section-description {
+    font-size: 15px;
+  }
+
+  .why-card {
+    margin-bottom: 20px;
+  }
+}

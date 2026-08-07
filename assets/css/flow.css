@@ -1,0 +1,205 @@
+/* =====================================================
+                FLOW / ALUR SERTIFIKASI
+===================================================== */
+
+.flow-section {
+  padding: 70px 0;
+
+  background: #f8f9fa;
+}
+
+/* ===================================
+        TIMELINE WRAPPER
+=================================== */
+
+.flow-wrapper {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  flex-wrap: wrap;
+
+  gap: 15px;
+
+  margin-top: 70px;
+}
+
+/* ===================================
+            ITEM
+=================================== */
+
+.flow-item {
+  width: 180px;
+
+  text-align: center;
+
+  position: relative;
+}
+
+/* ===================================
+            NUMBER
+=================================== */
+
+.flow-number {
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: #72000e;
+
+  margin-bottom: 15px;
+
+  letter-spacing: 2px;
+}
+
+/* ===================================
+            ICON
+=================================== */
+
+.flow-icon {
+  width: 85px;
+
+  height: 85px;
+
+  margin: 0 auto 20px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  border: 2px solid #72000e;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  transition: 0.35s ease;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.flow-icon i {
+  font-size: 34px;
+
+  color: #72000e;
+
+  transition: 0.35s;
+}
+
+/* Hover */
+
+.flow-item:hover .flow-icon {
+  background: #72000e;
+
+  transform: translateY(-8px);
+
+  box-shadow: 0 18px 35px rgba(114, 0, 14, 0.2);
+}
+
+.flow-item:hover .flow-icon i {
+  color: #ffffff;
+}
+
+/* ===================================
+            TITLE
+=================================== */
+
+.flow-item h5 {
+  font-size: 18px;
+
+  font-weight: 600;
+
+  color: #222;
+
+  margin: 0;
+}
+
+/* ===================================
+            ARROW
+=================================== */
+
+.flow-arrow {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-top: 52px;
+}
+
+.flow-arrow i {
+  font-size: 26px;
+
+  color: #72000e;
+}
+
+/* ===================================
+        RESPONSIVE
+=================================== */
+
+@media (max-width: 991px) {
+  .flow-wrapper {
+    justify-content: center;
+  }
+
+  .flow-item {
+    width: 160px;
+
+    margin-bottom: 30px;
+  }
+
+  .flow-arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .flow-section {
+    padding: 90px 0;
+  }
+
+  .flow-wrapper {
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 25px;
+  }
+
+  .flow-item {
+    width: 100%;
+
+    max-width: 260px;
+  }
+
+  .flow-arrow {
+    display: block;
+
+    margin: 0;
+
+    transform: rotate(90deg);
+  }
+
+  .flow-arrow i {
+    font-size: 22px;
+  }
+
+  .flow-icon {
+    width: 75px;
+
+    height: 75px;
+  }
+
+  .flow-icon i {
+    font-size: 28px;
+  }
+
+  .flow-item h5 {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,287 @@
+/* =====================================================
+                SKEMA SERTIFIKASI
+===================================================== */
+
+.certification-section {
+  padding: 120px 0;
+
+  background: #ffffff;
+}
+
+/* ===========================================
+            SECTION TITLE
+=========================================== */
+
+.section-title {
+  max-width: 760px;
+
+  margin: 0 auto 60px;
+}
+
+.section-subtitle {
+  display: inline-block;
+
+  padding: 8px 20px;
+
+  background: #72000e;
+
+  color: #fff;
+
+  border-radius: 30px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
+
+  margin-bottom: 18px;
+}
+
+.section-heading {
+  font-size: 42px;
+
+  font-weight: 700;
+
+  color: #222;
+
+  margin-bottom: 18px;
+}
+
+.section-description {
+  color: #6c757d;
+
+  font-size: 17px;
+
+  line-height: 1.8;
+}
+
+/* ===========================================
+                CARD
+=========================================== */
+
+.cert-card {
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  border: 1px solid #e8e8e8;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+
+  transition: 0.35s ease;
+
+  height: 100%;
+}
+
+.cert-card:hover {
+  transform: translateY(-10px);
+
+  border-color: #72000e;
+
+  box-shadow: 0 20px 45px rgba(114, 0, 14, 0.18);
+}
+
+/* ===========================================
+                IMAGE
+=========================================== */
+
+.cert-image {
+  height: 230px;
+
+  overflow: hidden;
+
+  position: relative;
+}
+
+.cert-image img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: 0.45s ease;
+}
+
+.cert-card:hover .cert-image img {
+  transform: scale(1.08);
+}
+
+/* Overlay saat hover */
+
+.cert-image::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(114, 0, 14, 0.1);
+
+  opacity: 0;
+
+  transition: 0.35s;
+}
+
+.cert-card:hover .cert-image::after {
+  opacity: 1;
+}
+
+/* ===========================================
+                BODY
+=========================================== */
+
+.cert-body {
+  padding: 28px;
+}
+
+.cert-body h4 {
+  font-size: 24px;
+
+  font-weight: 700;
+
+  color: #222;
+
+  margin-bottom: 15px;
+
+  transition: 0.3s;
+}
+
+.cert-card:hover h4 {
+  color: #72000e;
+}
+
+.cert-body p {
+  color: #6c757d;
+
+  line-height: 1.8;
+
+  margin-bottom: 25px;
+
+  font-size: 15px;
+}
+
+/* ===========================================
+                LINK
+=========================================== */
+
+.cert-link {
+  text-decoration: none;
+
+  color: #72000e;
+
+  font-weight: 600;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  transition: 0.3s;
+}
+
+.cert-link i {
+  transition: 0.3s;
+}
+
+.cert-link:hover {
+  color: #980012;
+}
+
+.cert-link:hover i {
+  transform: translateX(6px);
+}
+
+/* ===========================================
+            BUTTON SEMUA SKEMA
+=========================================== */
+
+.btn-skema {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 16px 34px;
+
+  background: #72000e;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  border-radius: 10px;
+
+  font-weight: 600;
+
+  transition: 0.35s;
+}
+
+.btn-skema:hover {
+  background: #980012;
+
+  color: #fff;
+
+  transform: translateY(-4px);
+
+  box-shadow: 0 12px 30px rgba(114, 0, 14, 0.25);
+}
+
+.btn-skema i {
+  transition: 0.35s;
+}
+
+.btn-skema:hover i {
+  transform: translateX(6px);
+}
+
+/* ===========================================
+            RESPONSIVE
+=========================================== */
+
+@media (max-width: 991px) {
+  .certification-section {
+    padding: 100px 0;
+  }
+
+  .section-heading {
+    font-size: 34px;
+  }
+
+  .cert-image {
+    height: 210px;
+  }
+
+  .cert-body {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .certification-section {
+    padding: 80px 0;
+  }
+
+  .section-heading {
+    font-size: 28px;
+  }
+
+  .section-description {
+    font-size: 15px;
+  }
+
+  .cert-image {
+    height: 200px;
+  }
+
+  .btn-skema {
+    width: 100%;
+
+    justify-content: center;
+  }
+}
