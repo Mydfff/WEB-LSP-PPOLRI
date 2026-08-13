@@ -1,0 +1,459 @@
+/* =========================================================
+   POPUP SERTIFIKASI SECURITY
+   File: assets/css/popup-security.css
+========================================================= */
+
+/* =========================================================
+   POPUP CONTAINER
+========================================================= */
+
+.security-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  visibility: hidden;
+  opacity: 0;
+
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+}
+
+/* POPUP ACTIVE */
+
+.security-popup.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.security-popup-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.72);
+
+  backdrop-filter: blur(4px);
+}
+
+/* =========================================================
+   POPUP BOX
+========================================================= */
+
+.security-popup-box {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  max-width: 850px;
+
+  display: grid;
+  grid-template-columns: 42% 58%;
+
+  background: #ffffff;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+
+  transform: translateY(25px) scale(0.96);
+
+  transition: transform 0.35s ease;
+}
+
+/* ACTIVE ANIMATION */
+
+.security-popup.show .security-popup-box {
+  transform: translateY(0) scale(1);
+}
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.security-popup-image {
+  position: relative;
+
+  min-height: 470px;
+
+  overflow: hidden;
+
+  background: #72000e;
+}
+
+.security-popup-image::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.45), transparent 60%);
+}
+
+.security-popup-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: transform 0.5s ease;
+}
+
+.security-popup-box:hover .security-popup-image img {
+  transform: scale(1.04);
+}
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.security-popup-close {
+  position: absolute;
+
+  top: 15px;
+  right: 15px;
+
+  z-index: 5;
+
+  width: 38px;
+  height: 38px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  color: #333;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.security-popup-close:hover {
+  background: #72000e;
+
+  color: #ffffff;
+
+  transform: rotate(90deg);
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.security-popup-content {
+  padding: 48px 45px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+/* =========================================================
+   BADGE
+========================================================= */
+
+.security-popup-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  width: fit-content;
+
+  padding: 7px 13px;
+
+  margin-bottom: 18px;
+
+  border-radius: 50px;
+
+  background: rgba(114, 0, 14, 0.08);
+
+  color: #72000e;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+}
+
+.security-popup-badge i {
+  font-size: 15px;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.security-popup-content h2 {
+  margin: 0 0 15px;
+
+  color: #202020;
+
+  font-size: 32px;
+
+  line-height: 1.25;
+
+  font-weight: 700;
+}
+
+.security-popup-content h2 span {
+  color: #72000e;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.security-popup-content > p {
+  margin: 0 0 22px;
+
+  color: #666;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+/* =========================================================
+   BENEFITS
+========================================================= */
+
+.security-popup-benefits {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  margin-bottom: 28px;
+}
+
+.security-benefit {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  color: #444;
+
+  font-size: 13px;
+
+  font-weight: 500;
+}
+
+.security-benefit i {
+  color: #72000e;
+
+  font-size: 17px;
+}
+
+/* =========================================================
+   ACTION BUTTON
+========================================================= */
+
+.security-popup-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+}
+
+/* PRIMARY */
+
+.security-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 12px 20px;
+
+  border-radius: 8px;
+
+  background: #72000e;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.security-btn-primary:hover {
+  background: #57000b;
+
+  color: #ffffff;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(114, 0, 14, 0.25);
+}
+
+/* SECONDARY */
+
+.security-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 12px 5px;
+
+  color: #72000e;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  transition: gap 0.2s ease;
+}
+
+.security-btn-secondary:hover {
+  color: #57000b;
+
+  gap: 11px;
+}
+
+/* =========================================================
+   RESPONSIVE TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+  .security-popup {
+    padding: 15px;
+  }
+
+  .security-popup-box {
+    max-width: 500px;
+
+    grid-template-columns: 1fr;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+  }
+
+  .security-popup-image {
+    min-height: 220px;
+
+    max-height: 250px;
+  }
+
+  .security-popup-content {
+    padding: 30px 28px 32px;
+  }
+
+  .security-popup-content h2 {
+    font-size: 26px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE HP
+========================================================= */
+
+@media (max-width: 480px) {
+  .security-popup {
+    padding: 12px;
+  }
+
+  .security-popup-box {
+    border-radius: 16px;
+
+    max-height: 92vh;
+  }
+
+  .security-popup-image {
+    min-height: 180px;
+
+    max-height: 190px;
+  }
+
+  .security-popup-content {
+    padding: 25px 22px 27px;
+  }
+
+  .security-popup-content h2 {
+    font-size: 23px;
+
+    line-height: 1.3;
+  }
+
+  .security-popup-content > p {
+    font-size: 13px;
+
+    line-height: 1.7;
+  }
+
+  .security-popup-badge {
+    font-size: 10px;
+  }
+
+  .security-benefit {
+    font-size: 12px;
+  }
+
+  .security-popup-actions {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .security-btn-primary {
+    width: 100%;
+  }
+
+  .security-btn-secondary {
+    justify-content: center;
+
+    padding: 8px;
+  }
+
+  .security-popup-close {
+    width: 34px;
+    height: 34px;
+
+    top: 10px;
+    right: 10px;
+  }
+}
