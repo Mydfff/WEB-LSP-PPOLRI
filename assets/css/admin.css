@@ -1491,3 +1491,15 @@ img {
     padding: 0;
   }
 }
+
+/* =========================================================
+   SERTIFIKASI MENU
+========================================================= */
+
+.sidebar-link span {
+  line-height: 1.4;
+}
+
+.sidebar-link {
+  white-space: normal;
+}

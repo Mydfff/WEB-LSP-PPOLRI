@@ -1,4 +1,5 @@
 <?php
+
 // ==========================================================
 // DASHBOARD ADMIN - LSP PPPOLRI
 // File: admin/dashboard.php
@@ -6,16 +7,18 @@
 
 session_start();
 
+
 // ==========================================================
 // CEK LOGIN
 // ==========================================================
 
 if (!isset($_SESSION["admin_id"])) {
 
-    header("Location: ../auth/login.php ");
+    header("Location: ../auth/login.php");
     exit;
 
 }
+
 
 // ==========================================================
 // KONEKSI DATABASE
@@ -23,76 +26,94 @@ if (!isset($_SESSION["admin_id"])) {
 
 require_once "../config/database.php";
 
+
 // ==========================================================
-// DATA ADMIN DARI SESSION
+// DATA ADMIN
 // ==========================================================
 
 $adminNama = $_SESSION["admin_nama"] ?? "Administrator";
-$adminRole = $_SESSION["admin_role"] ?? "admin";
+$adminRole = $_SESSION["admin_role"] ?? "Administrator";
+
+
+// ==========================================================
+// PAGE INFORMATION
+// ==========================================================
+
+$pageTitle = "Dashboard";
+$pageSubtitle = "Panel Administrasi LSP PPPOLRI";
+
 
 // ==========================================================
 // DATA SEMENTARA
 // Nanti diganti query MySQL
 // ==========================================================
+
 $totalBerita  = 19;
 $totalGaleri  = 24;
 $totalSkema   = 42;
 $totalPeserta = 125;
 
-// Data berita sementara
+
+// ==========================================================
+// DATA BERITA SEMENTARA
+// ==========================================================
+
 $beritaTerbaru = [
+
     [
         'judul'  => 'LSP PPPOLRI Menyelenggarakan Sertifikasi Digital Forensik',
         'tanggal' => '28 Juli 2026',
         'status' => 'Published'
     ],
+
     [
         'judul'  => 'Pelaksanaan Sertifikasi Bidang Cyber Security',
         'tanggal' => '24 Juli 2026',
         'status' => 'Published'
     ],
+
     [
         'judul'  => 'Pembukaan Pendaftaran Asesor Kompetensi Tahun 2026',
         'tanggal' => '20 Juli 2026',
         'status' => 'Draft'
     ]
+
 ];
 
-// Aktivitas sementara
+
+// ==========================================================
+// AKTIVITAS SEMENTARA
+// ==========================================================
+
 $aktivitasTerbaru = [
+
     [
         'icon' => 'bi-newspaper',
         'judul' => 'Berita baru ditambahkan',
         'deskripsi' => 'Sertifikasi Digital Forensik 2026',
         'waktu' => '10 menit lalu'
     ],
+
     [
         'icon' => 'bi-images',
         'judul' => 'Galeri diperbarui',
         'deskripsi' => 'Dokumentasi kegiatan asesmen',
         'waktu' => '1 jam lalu'
     ],
+
     [
         'icon' => 'bi-person-plus',
         'judul' => 'Peserta baru mendaftar',
         'deskripsi' => 'Pendaftaran skema Cyber Security',
         'waktu' => '2 jam lalu'
     ]
+
 ];
-
-
-// ----------------------------------------------------------
-// DATA ADMIN
-// Nanti dapat diambil dari session login
-// ----------------------------------------------------------
-
-$adminNama = 'Administrator';
-$adminRole = 'Administrator';
 
 ?>
 
-
 <!DOCTYPE html>
+
 <html lang="id">
 
 <head>
@@ -104,34 +125,30 @@ $adminRole = 'Administrator';
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Dashboard Admin | LSP PPPOLRI</title>
+    <title>
+        Dashboard Admin | LSP PPPOLRI
+    </title>
 
 
-    <!-- =====================================================
-         BOOTSTRAP
-    ====================================================== -->
-
+    <!-- Bootstrap -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
         rel="stylesheet"
     >
 
 
-    <!-- =====================================================
-         BOOTSTRAP ICONS
-    ====================================================== -->
-
+    <!-- Bootstrap Icons -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
         rel="stylesheet"
     >
 
 
-    <!-- =====================================================
-         GOOGLE FONT
-    ====================================================== -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Google Font -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
     <link
         rel="preconnect"
@@ -145,22 +162,7 @@ $adminRole = 'Administrator';
     >
 
 
-    <!-- =====================================================
-         ADMIN CSS
-         
-         Karena dashboard.php berada di folder:
-         
-         WEB-LSP-PPPOLRI/
-         ├── admin/
-         │   └── dashboard.php
-         │
-         └── assets/
-             └── css/
-                 └── admin.css
-         
-         maka path yang benar:
-    ====================================================== -->
-
+    <!-- Admin CSS -->
     <link
         rel="stylesheet"
         href="../assets/css/admin.css"
@@ -172,10 +174,6 @@ $adminRole = 'Administrator';
 <body>
 
 
-<!-- =========================================================
-     ADMIN WRAPPER
-========================================================== -->
-
 <div class="admin-wrapper">
 
 
@@ -183,212 +181,7 @@ $adminRole = 'Administrator';
          SIDEBAR
     ====================================================== -->
 
-    <aside
-        class="admin-sidebar"
-        id="adminSidebar"
-    >
-
-
-        <!-- =================================================
-             SIDEBAR BRAND
-        ================================================== -->
-
-        <div class="sidebar-brand">
-
-            <div class="brand-logo">
-                <i class="bi bi-shield-check"></i>
-            </div>
-
-            <div class="brand-text">
-                <strong>LSP PPPOLRI</strong>
-                <span>Admin Panel</span>
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             SIDEBAR NAVIGATION
-        ================================================== -->
-
-        <nav class="sidebar-nav">
-
-
-            <!-- ===============================
-                 MENU UTAMA
-            ================================ -->
-
-            <div class="nav-section">
-
-                <span class="nav-section-title">
-                    MENU UTAMA
-                </span>
-
-
-                <!-- Dashboard -->
-
-                <a
-                    href="dashboard.php"
-                    class="sidebar-link active"
-                >
-                    <i class="bi bi-grid-fill"></i>
-
-                    <span>
-                        Dashboard
-                    </span>
-                </a>
-
-
-                <!-- Berita -->
-
-                <a
-                    href="berita.php"
-                    class="sidebar-link"
-                >
-                    <i class="bi bi-newspaper"></i>
-
-                    <span>
-                        Berita
-                    </span>
-                </a>
-
-
-                <!-- Galeri -->
-
-                <a
-                    href="galeri.php"
-                    class="sidebar-link"
-                >
-                    <i class="bi bi-images"></i>
-
-                    <span>
-                        Galeri
-                    </span>
-                </a>
-
-
-                <!-- Skema -->
-
-                <a
-                    href="skema.php"
-                    class="sidebar-link"
-                >
-                    <i class="bi bi-award"></i>
-
-                    <span>
-                        Skema Sertifikasi
-                    </span>
-                </a>
-
-
-                <!-- FAQ -->
-
-                <a
-                    href="faq.php"
-                    class="sidebar-link"
-                >
-                    <i class="bi bi-question-circle"></i>
-
-                    <span>
-                        FAQ
-                    </span>
-                </a>
-
-
-                <!-- Peserta -->
-
-                <a
-                    href="peserta.php"
-                    class="sidebar-link"
-                >
-                    <i class="bi bi-people"></i>
-
-                    <span>
-                        Data Peserta
-                    </span>
-                </a>
-
-            </div>
-
-
-            <!-- ===============================
-                 MANAGEMENT
-            ================================ -->
-
-            <div class="nav-section">
-
-                <span class="nav-section-title">
-                    MANAGEMENT
-                </span>
-
-
-                <!-- Kelola Admin -->
-
-                <a
-                    href="admin.php"
-                    class="sidebar-link"
-                >
-                    <i class="bi bi-person-gear"></i>
-
-                    <span>
-                        Kelola Admin
-                    </span>
-                </a>
-
-
-                <!-- Pengaturan -->
-
-                <a
-                    href="#"
-                    class="sidebar-link"
-                >
-                    <i class="bi bi-gear"></i>
-
-                    <span>
-                        Pengaturan
-                    </span>
-                </a>
-
-            </div>
-
-        </nav>
-
-
-        <!-- =================================================
-             SIDEBAR FOOTER
-        ================================================== -->
-
-        <div class="sidebar-footer">
-
-            <a
-                href="../auth/logout.php"
-                class="sidebar-link"
-            >
-
-                <i class="bi bi-box-arrow-right"></i>
-
-                <span>
-                    Logout
-                </span>
-
-            </a>
-
-        </div>
-
-    </aside>
-
-
-    <!-- =====================================================
-         OVERLAY MOBILE
-         
-         Akan muncul ketika sidebar dibuka di mobile.
-    ====================================================== -->
-
-    <div
-        class="sidebar-overlay"
-        id="sidebarOverlay"
-    ></div>
-
+    <?php require_once "components/sidebar.php"; ?>
 
 
     <!-- =====================================================
@@ -399,109 +192,10 @@ $adminRole = 'Administrator';
 
 
         <!-- =================================================
-             TOPBAR
+             HEADER
         ================================================== -->
 
-        <header class="admin-topbar">
-
-
-            <!-- =============================================
-                 HAMBURGER BUTTON
-                 
-                 INI YANG SEBELUMNYA BELUM ADA.
-                 JS akan membaca class .sidebar-toggle
-            ============================================== -->
-
-            <button
-                type="button"
-                class="sidebar-toggle"
-                id="sidebarToggle"
-                aria-label="Buka menu"
-                aria-expanded="false"
-            >
-
-                <i class="bi bi-list"></i>
-
-            </button>
-
-
-            <!-- =============================================
-                 TOPBAR TITLE
-            ============================================== -->
-
-            <div class="topbar-title">
-
-                <h2>
-                    Dashboard
-                </h2>
-
-                <span>
-                    Panel Administrasi LSP PPPOLRI
-                </span>
-
-            </div>
-
-
-            <!-- =============================================
-                 TOPBAR RIGHT
-            ============================================== -->
-
-            <div class="topbar-actions">
-
-
-                <!-- Notification -->
-
-                <button
-                    type="button"
-                    class="notification-btn"
-                    aria-label="Notifikasi"
-                >
-
-                    <i class="bi bi-bell"></i>
-
-                    <span class="notification-badge">
-                        3
-                    </span>
-
-                </button>
-
-
-                <!-- Admin Profile -->
-
-                                <a
-                    href="profile.php"
-                    class="admin-profile"
-                    title="Profil Admin"
-                >
-
-                    <div class="admin-avatar">
-
-                        <i class="bi bi-person-fill"></i>
-
-                    </div>
-
-
-                    <div class="admin-profile-info">
-
-                        <strong>
-                            <?php echo htmlspecialchars($adminNama); ?>
-                        </strong>
-
-                        <span>
-                            <?php echo htmlspecialchars($adminRole); ?>
-                        </span>
-
-                    </div>
-
-
-                    <i class="bi bi-chevron-down profile-arrow"></i>
-
-                </a>
-
-            </div>
-
-        </header>
-
+        <?php require_once "components/header.php"; ?>
 
 
         <!-- =================================================
@@ -511,9 +205,9 @@ $adminRole = 'Administrator';
         <main class="dashboard-content">
 
 
-            <!-- =============================================
+            <!-- =================================================
                  WELCOME
-            ============================================== -->
+            ================================================== -->
 
             <section class="dashboard-welcome">
 
@@ -522,7 +216,8 @@ $adminRole = 'Administrator';
                 </span>
 
                 <h1>
-                    Selamat Datang, <?php echo htmlspecialchars($adminNama); ?>
+                    Selamat Datang,
+                    <?php echo htmlspecialchars($adminNama); ?>
                 </h1>
 
                 <p>
@@ -533,16 +228,14 @@ $adminRole = 'Administrator';
             </section>
 
 
-
-            <!-- =============================================
+            <!-- =================================================
                  STATISTICS
-            ============================================== -->
+            ================================================== -->
 
             <section class="dashboard-statistics">
 
 
                 <!-- Total Berita -->
-
                 <div class="stat-card">
 
                     <div class="stat-content">
@@ -562,16 +255,13 @@ $adminRole = 'Administrator';
                     </div>
 
                     <div class="stat-icon stat-icon-news">
-
                         <i class="bi bi-newspaper"></i>
-
                     </div>
 
                 </div>
 
 
                 <!-- Total Galeri -->
-
                 <div class="stat-card">
 
                     <div class="stat-content">
@@ -591,16 +281,13 @@ $adminRole = 'Administrator';
                     </div>
 
                     <div class="stat-icon stat-icon-gallery">
-
                         <i class="bi bi-images"></i>
-
                     </div>
 
                 </div>
 
 
                 <!-- Total Skema -->
-
                 <div class="stat-card">
 
                     <div class="stat-content">
@@ -620,16 +307,13 @@ $adminRole = 'Administrator';
                     </div>
 
                     <div class="stat-icon stat-icon-scheme">
-
                         <i class="bi bi-award"></i>
-
                     </div>
 
                 </div>
 
 
                 <!-- Total Peserta -->
-
                 <div class="stat-card">
 
                     <div class="stat-content">
@@ -649,15 +333,12 @@ $adminRole = 'Administrator';
                     </div>
 
                     <div class="stat-icon stat-icon-users">
-
                         <i class="bi bi-people"></i>
-
                     </div>
 
                 </div>
 
             </section>
-
 
 
             <!-- =================================================
@@ -667,14 +348,11 @@ $adminRole = 'Administrator';
             <section class="dashboard-grid">
 
 
-                <!-- =============================================
+                <!-- =================================================
                      BERITA TERBARU
-                ============================================== -->
+                ================================================== -->
 
                 <div class="dashboard-card news-admin-card">
-
-
-                    <!-- Card Header -->
 
                     <div class="dashboard-card-header">
 
@@ -690,41 +368,26 @@ $adminRole = 'Administrator';
 
                         </div>
 
-
                         <a
-                            href="berita.php"
+                            href="berita/daftar.php"
                             class="card-action"
                         >
-
                             Kelola Berita
-
                             <i class="bi bi-arrow-right"></i>
-
                         </a>
 
                     </div>
 
 
-                    <!-- News List -->
-
                     <div class="news-admin-list">
-
 
                         <?php foreach ($beritaTerbaru as $berita): ?>
 
                             <div class="news-admin-item">
 
-
-                                <!-- Icon -->
-
                                 <div class="news-admin-icon">
-
                                     <i class="bi bi-newspaper"></i>
-
                                 </div>
-
-
-                                <!-- Information -->
 
                                 <div class="news-admin-info">
 
@@ -750,9 +413,6 @@ $adminRole = 'Administrator';
 
                                 </div>
 
-
-                                <!-- Status -->
-
                                 <span
                                     class="status-badge
                                     <?php
@@ -761,34 +421,27 @@ $adminRole = 'Administrator';
                                     );
                                     ?>"
                                 >
-
                                     <?php
                                     echo htmlspecialchars(
                                         $berita['status']
                                     );
                                     ?>
-
                                 </span>
 
                             </div>
 
                         <?php endforeach; ?>
 
-
                     </div>
 
                 </div>
 
 
-
-                <!-- =============================================
+                <!-- =================================================
                      AKTIVITAS TERBARU
-                ============================================== -->
+                ================================================== -->
 
                 <div class="dashboard-card activity-card">
-
-
-                    <!-- Header -->
 
                     <div class="dashboard-card-header">
 
@@ -807,17 +460,11 @@ $adminRole = 'Administrator';
                     </div>
 
 
-                    <!-- Activity List -->
-
                     <div class="activity-list">
-
 
                         <?php foreach ($aktivitasTerbaru as $aktivitas): ?>
 
                             <div class="activity-item">
-
-
-                                <!-- Icon -->
 
                                 <div class="activity-icon">
 
@@ -830,9 +477,6 @@ $adminRole = 'Administrator';
                                     ></i>
 
                                 </div>
-
-
-                                <!-- Content -->
 
                                 <div class="activity-content">
 
@@ -866,7 +510,6 @@ $adminRole = 'Administrator';
 
                         <?php endforeach; ?>
 
-
                     </div>
 
                 </div>
@@ -874,15 +517,11 @@ $adminRole = 'Administrator';
             </section>
 
 
-
             <!-- =================================================
                  QUICK ACCESS
             ================================================== -->
 
             <section class="dashboard-card quick-access-card">
-
-
-                <!-- Header -->
 
                 <div class="dashboard-card-header">
 
@@ -901,22 +540,17 @@ $adminRole = 'Administrator';
                 </div>
 
 
-                <!-- Quick Access -->
-
                 <div class="quick-access-grid">
 
 
                     <!-- Tambah Berita -->
-
                     <a
-                        href="berita.php"
+                        href="berita/tambah.php"
                         class="quick-access-item"
                     >
 
                         <div class="quick-access-icon">
-
                             <i class="bi bi-plus-lg"></i>
-
                         </div>
 
                         <div>
@@ -936,24 +570,20 @@ $adminRole = 'Administrator';
                     </a>
 
 
-
-                    <!-- Tambah Galeri -->
-
+                    <!-- Galeri -->
                     <a
-                        href="galeri.php"
+                        href="galeri/"
                         class="quick-access-item"
                     >
 
                         <div class="quick-access-icon">
-
                             <i class="bi bi-images"></i>
-
                         </div>
 
                         <div>
 
                             <strong>
-                                Tambah Galeri
+                                Kelola Galeri
                             </strong>
 
                             <span>
@@ -967,28 +597,24 @@ $adminRole = 'Administrator';
                     </a>
 
 
-
-                    <!-- Tambah Skema -->
-
+                    <!-- Skema -->
                     <a
-                        href="skema.php"
+                        href="skema/"
                         class="quick-access-item"
                     >
 
                         <div class="quick-access-icon">
-
                             <i class="bi bi-award"></i>
-
                         </div>
 
                         <div>
 
                             <strong>
-                                Tambah Skema
+                                Kelola Skema
                             </strong>
 
                             <span>
-                                Tambahkan skema sertifikasi
+                                Kelola skema sertifikasi
                             </span>
 
                         </div>
@@ -998,18 +624,14 @@ $adminRole = 'Administrator';
                     </a>
 
 
-
-                    <!-- Data Peserta -->
-
+                    <!-- Peserta -->
                     <a
-                        href="peserta.php"
+                        href="peserta/"
                         class="quick-access-item"
                     >
 
                         <div class="quick-access-icon">
-
                             <i class="bi bi-people"></i>
-
                         </div>
 
                         <div>
@@ -1019,7 +641,7 @@ $adminRole = 'Administrator';
                             </strong>
 
                             <span>
-                                Lihat pendaftaran terbaru
+                                Lihat peserta terdaftar
                             </span>
 
                         </div>
@@ -1032,25 +654,14 @@ $adminRole = 'Administrator';
 
             </section>
 
-
         </main>
 
 
-
-        <!-- =================================================
+        <!-- =====================================================
              FOOTER
-        ================================================== -->
+        ====================================================== -->
 
-        <footer class="admin-footer">
-
-            <p>
-                &copy;
-                <?php echo date('Y'); ?>
-                LSP PPPOLRI.
-                Admin Dashboard.
-            </p>
-
-        </footer>
+        <?php require_once "components/footer.php"; ?>
 
 
     </div>
@@ -1058,11 +669,8 @@ $adminRole = 'Administrator';
 </div>
 
 
-
 <!-- =========================================================
-     JAVASCRIPT
-     
-     Bootstrap JS
+     BOOTSTRAP JS
 ========================================================== -->
 
 <script
@@ -1071,13 +679,7 @@ $adminRole = 'Administrator';
 
 
 <!-- =========================================================
-     ADMIN JAVASCRIPT
-
-     Lokasi:
-     WEB-LSP-PPPOLRI/assets/js/admin.js
-     
-     Dari admin/dashboard.php:
-     ../assets/js/admin.js
+     ADMIN JS
 ========================================================== -->
 
 <script
@@ -1086,4 +688,5 @@ $adminRole = 'Administrator';
 
 
 </body>
+
 </html>

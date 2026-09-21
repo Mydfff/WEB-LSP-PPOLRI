@@ -1,14 +1,18 @@
 <!-- ======================================
-            MAIN NAVBAR
+             MAIN NAVBAR
 ======================================= -->
 
 <nav class="navbar navbar-expand-lg navbar-custom shadow-sm">
   <div class="container">
-    <!-- Mobile Brand -->
+    <!-- ======================================
+                    MOBILE BRAND
+    ======================================= -->
 
-    <a class="navbar-brand d-lg-none" href="index.php"> LSP PPPOLRI </a>
+    <a class="navbar-brand d-lg-none" href="/Web-LSP-PPOLRI/index.php"> LSP PPPOLRI </a>
 
-    <!-- Hamburger -->
+    <!-- ======================================
+                    HAMBURGER
+    ======================================= -->
 
     <button
       class="navbar-toggler"
@@ -22,110 +26,162 @@
       <i class="bi bi-list"></i>
     </button>
 
-    <!-- Menu -->
+    <!-- ======================================
+                    MENU
+    ======================================= -->
 
     <div class="collapse navbar-collapse" id="navbarMenu">
       <ul class="navbar-nav mx-auto">
-        <!-- Beranda -->
+        <!-- ==================================
+                        1. BERANDA
+        =================================== -->
 
         <li class="nav-item">
-          <a class="nav-link active" href="index.php"> Beranda </a>
+          <a class="nav-link" href="/Web-LSP-PPOLRI/index.php"> Beranda </a>
         </li>
 
-        <!-- Profil -->
+        <!-- ==================================
+                    2. PROFIL & LEGALITAS
+        =================================== -->
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"> Profile </a>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Profil & Legalitas
+          </a>
 
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="profil.html"> Tentang LSP </a>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/profil.php"> Tentang LSP </a>
             </li>
 
             <li>
-              <a class="dropdown-item" href="#"> Visi & Misi </a>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/visi-misi.php"> Visi & Misi </a>
             </li>
 
             <li>
-              <a class="dropdown-item" href="#"> Struktur Organisasi </a>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/struktur.php"> Struktur Organisasi </a>
             </li>
 
             <li>
-              <a class="dropdown-item" href="#"> Legalitas </a>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/legalitas.php"> Legalitas </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/kebijakan-mutu.php"> Kebijakan Mutu </a>
             </li>
           </ul>
         </li>
 
-        <!-- Skema -->
+        <!-- ==================================
+                    3. SKEMA SERTIFIKASI
+        =================================== -->
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"> Skema Sertifikasi </a>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Skema Sertifikasi
+          </a>
 
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="skema.html"> Okupasi </a>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/pages/sertifikasi/skema.php"> Daftar Skema </a>
             </li>
 
             <li>
-              <a class="dropdown-item" href="#"> Klaster </a>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/okupasi.php"> Okupasi </a>
             </li>
 
             <li>
-              <a class="dropdown-item" href="#"> KKNI </a>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/klaster.php"> Klaster </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/kkni.php"> KKNI </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/persyaratan.php"> Persyaratan & Masa Berlaku </a>
             </li>
           </ul>
         </li>
 
-        <!-- Informasi -->
+        <!-- ==================================
+                    4. LAYANAN SERTIFIKASI
+        =================================== -->
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"> Informasi </a>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Layanan Sertifikasi
+          </a>
 
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="jadwal.html"> Jadwal Asesmen </a>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/pendaftaran.php"> Pendaftaran Sertifikasi </a>
             </li>
 
             <li>
-              <a class="dropdown-item" href="berita.html"> Berita </a>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/sertifikasi-ulang.php"> Sertifikasi Ulang </a>
             </li>
 
             <li>
-              <a class="dropdown-item" href="#"> Pengumuman </a>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/perpanjangan.php"> Perpanjangan Sertifikat </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/jadwal.php"> Jadwal Asesmen </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/status.php"> Pantau Status Pendaftaran </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/kerja-sama.php"> Kerja Sama & Mitra </a>
             </li>
           </ul>
         </li>
 
-        <!-- Galeri -->
+        <!-- ==================================
+                        5. INFORMASI
+        =================================== -->
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Informasi
+          </a>
+
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/berita.php"> Berita & Kegiatan </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/pengumuman.php"> Pengumuman </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/faq.php"> FAQ </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="/Web-LSP-PPOLRI/download.php"> Download / Dokumen </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- ==================================
+                        6. GALERI
+        =================================== -->
 
         <li class="nav-item">
-          <a class="nav-link" href="galeri.html"> Galeri </a>
+          <a class="nav-link" href="/Web-LSP-PPOLRI/galeri.php"> Galeri </a>
         </li>
 
-        <!-- Download -->
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"> Download </a>
-
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="download.html"> Formulir </a>
-            </li>
-
-            <li>
-              <a class="dropdown-item" href="#"> SOP </a>
-            </li>
-
-            <li>
-              <a class="dropdown-item" href="#"> Dokumen </a>
-            </li>
-          </ul>
-        </li>
-
-        <!-- Kontak -->
+        <!-- ==================================
+                        7. KONTAK
+        =================================== -->
 
         <li class="nav-item">
-          <a class="nav-link" href="kontak.html"> Kontak </a>
+          <a class="nav-link" href="/Web-LSP-PPOLRI/kontak.php"> Kontak </a>
         </li>
       </ul>
     </div>

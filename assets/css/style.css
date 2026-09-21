@@ -17,7 +17,7 @@ body {
 
   overflow: hidden;
 
-  background-image: linear-gradient(rgba(155, 0, 0, 0.358), rgba(114, 0, 13, 0.659)), url("/assets/img/hero-bg.jpg");
+  background-image: linear-gradient(rgba(155, 0, 0, 0.358), rgba(114, 0, 13, 0.659)), url("../img/hero-bg.jpg");
 
   background-size: cover;
 

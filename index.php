@@ -1,4 +1,104 @@
+<?php
 
+require_once "config/database.php";
+
+/*
+|--------------------------------------------------------------------------
+| HELPER HTML
+|--------------------------------------------------------------------------
+*/
+
+function e($value)
+{
+    return htmlspecialchars(
+        (string) $value,
+        ENT_QUOTES | ENT_SUBSTITUTE,
+        "UTF-8"
+    );
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| FORMAT TANGGAL INDONESIA
+|--------------------------------------------------------------------------
+*/
+
+function formatTanggalIndonesia($tanggal)
+{
+    $bulan = [
+        1 => 'Januari',
+        2 => 'Februari',
+        3 => 'Maret',
+        4 => 'April',
+        5 => 'Mei',
+        6 => 'Juni',
+        7 => 'Juli',
+        8 => 'Agustus',
+        9 => 'September',
+        10 => 'Oktober',
+        11 => 'November',
+        12 => 'Desember'
+    ];
+
+    $timestamp = strtotime($tanggal);
+
+    if (!$timestamp) {
+        return '-';
+    }
+
+    $hari = date('d', $timestamp);
+    $bulanAngka = date('n', $timestamp);
+    $tahun = date('Y', $timestamp);
+
+    return $hari . ' ' . $bulan[$bulanAngka] . ' ' . $tahun;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| AMBIL BERITA PUBLISHED
+|--------------------------------------------------------------------------
+|
+| Hanya berita dengan status publish
+| yang ditampilkan pada halaman utama.
+|
+*/
+
+$stmtBerita = $pdo->prepare("
+    SELECT
+        id,
+        judul,
+        kategori,
+        gambar,
+        isi,
+        status,
+        created_at
+    FROM berita
+    WHERE status = 'publish'
+    ORDER BY created_at DESC
+    LIMIT 3
+");
+
+$stmtBerita->execute();
+
+$beritaList = $stmtBerita->fetchAll();
+
+
+/*
+|--------------------------------------------------------------------------
+| PISAHKAN BERITA UTAMA DAN BERITA SAMPING
+|--------------------------------------------------------------------------
+*/
+
+$beritaUtama = $beritaList[0] ?? null;
+
+$beritaSamping = array_slice(
+    $beritaList,
+    1
+);
+
+?>
 <!doctype html>
 <html lang="id">
 
@@ -7,6 +107,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>LSP PPPOLRI</title>
+     <link rel="icon" type="image/png" href="assets/img/Logo-ppolri.jpg">
 
     <!-- Bootstrap CSS -->
     <link
@@ -87,7 +188,7 @@
                     </div>
 
                     <h1 class="hero-title">
-                        LSP PPPOLRI
+                        LSP SEKURITI POLRI
                     </h1>
 
                     <h2 class="hero-subtitle">
@@ -95,7 +196,7 @@
                     </h2>
 
                     <p class="hero-description">
-                        Website resmi LSP PPPOLRI sebagai pusat informasi sertifikasi
+                        Website resmi LSP SEKURITI POLRI sebagai pusat informasi sertifikasi
                         profesi, jadwal asesmen, skema kompetensi, berita, dan layanan
                         pendaftaran.
                     </p>
@@ -270,11 +371,11 @@
                     <div class="about-content">
 
                         <span class="about-subtitle">
-                            Tentang LSP PPPOLRI
+                            Tentang LSP SEKURITI POLRI
                         </span>
 
                         <h2 class="about-title">
-                            Lembaga Sertifikasi Profesi PPPOLRI
+                            Lembaga Sertifikasi Profesi Sekuriti
                         </h2>
 
                         <p class="about-description">
@@ -771,169 +872,306 @@
 
 
 
-    <!-- =====================================================
-         BERITA & PENGUMUMAN
-    ====================================================== -->
+    
+         <!-- =====================================================
+     BERITA & PENGUMUMAN
+====================================================== -->
 
-    <section class="news-section">
+<section class="news-section">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="section-title text-center">
+        <div class="section-title text-center">
 
-                <span class="section-subtitle">
-                    Berita & Pengumuman
-                </span>
+            <span class="section-subtitle">
+                Berita & Pengumuman
+            </span>
 
-                <h2 class="section-heading">
-                    Informasi Terbaru LSP PPPOLRI
-                </h2>
+            <h2 class="section-heading">
+                Informasi Terbaru LSP PPPOLRI
+            </h2>
 
-                <p class="section-description">
-                    Ikuti berbagai informasi terbaru mengenai kegiatan, sertifikasi,
-                    pengumuman resmi, serta agenda yang diselenggarakan oleh
-                    LSP PPPOLRI.
-                </p>
+            <p class="section-description">
+                Ikuti berbagai informasi terbaru mengenai kegiatan, sertifikasi,
+                pengumuman resmi, serta agenda yang diselenggarakan oleh
+                LSP PPPOLRI.
+            </p>
 
-            </div>
+        </div>
+
+
+        <?php if (!empty($beritaList)): ?>
 
 
             <div class="row mt-5">
 
 
-                <!-- BERITA UTAMA -->
+                <!-- =================================================
+                     BERITA UTAMA
+                ================================================== -->
 
-                <div class="col-lg-8">
+                <?php if ($beritaUtama): ?>
 
-                    <div class="featured-news">
+                    <div class="col-lg-8">
 
-                        <div class="featured-image">
+                        <div class="featured-news">
 
-                            <img
-                                src="assets/images/news/news1.jpg"
-                                alt="Berita Utama">
 
-                        </div>
+                            <!-- GAMBAR -->
 
-                        <div class="featured-body">
+                            <div class="featured-image">
 
-                            <span class="news-date">
+                                <?php if (!empty($beritaUtama['gambar'])): ?>
 
-                                <i class="bi bi-calendar-event"></i>
+                                    <img
+                                        src="uploads/berita/<?php echo e($beritaUtama['gambar']); ?>"
+                                        alt="<?php echo e($beritaUtama['judul']); ?>"
+                                    >
 
-                                28 Juli 2026
+                                <?php else: ?>
 
-                            </span>
+                                    <img
+                                        src="assets/images/news/news1.jpg"
+                                        alt="<?php echo e($beritaUtama['judul']); ?>"
+                                    >
 
-                            <h3>
-                                LSP PPPOLRI Menyelenggarakan Sertifikasi
-                                Kompetensi Digital Forensik Tahun 2026
-                            </h3>
+                                <?php endif; ?>
 
-                            <p>
-                                Kegiatan sertifikasi kompetensi Digital Forensik
-                                dilaksanakan untuk meningkatkan kualitas sumber
-                                daya manusia yang profesional sesuai standar
-                                Badan Nasional Sertifikasi Profesi (BNSP).
-                            </p>
+                            </div>
 
-                            <a href="#" class="news-link">
 
-                                Baca Selengkapnya
+                            <!-- CONTENT -->
 
-                                <i class="bi bi-arrow-right"></i>
+                            <div class="featured-body">
 
-                            </a>
+
+                                <!-- KATEGORI + TANGGAL -->
+
+                                <span class="news-date">
+
+                                    <i class="bi bi-calendar-event"></i>
+
+                                    <?php
+                                    echo e(
+                                        formatTanggalIndonesia(
+                                            $beritaUtama['created_at']
+                                        )
+                                    );
+                                    ?>
+
+                                </span>
+
+
+                                <!-- JUDUL -->
+
+                                <h3>
+
+                                    <?php
+                                    echo e(
+                                        $beritaUtama['judul']
+                                    );
+                                    ?>
+
+                                </h3>
+
+
+                                <!-- ISI -->
+
+                                <p>
+
+                                    <?php
+
+                                    $isiBerita =
+                                        strip_tags(
+                                            $beritaUtama['isi']
+                                        );
+
+                                    echo e(
+                                        mb_strimwidth(
+                                            $isiBerita,
+                                            0,
+                                            180,
+                                            '...'
+                                        )
+                                    );
+
+                                    ?>
+
+                                </p>
+
+
+                                <!-- LINK -->
+
+                                <a
+                                    href="berita-detail.php?id=<?php echo (int) $beritaUtama['id']; ?>"
+                                    class="news-link"
+                                >
+
+                                    Baca Selengkapnya
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </a>
+
+
+                            </div>
 
                         </div>
 
                     </div>
 
-                </div>
+                <?php endif; ?>
 
 
-                <!-- LIST BERITA -->
+                <!-- =================================================
+                     BERITA SAMPING
+                ================================================== -->
 
                 <div class="col-lg-4">
 
 
-                    <div class="news-side">
+                    <?php foreach ($beritaSamping as $index => $berita): ?>
 
-                        <div class="news-thumb">
 
-                            <img
-                                src="assets/images/news/news2.jpg"
-                                alt="News">
+                        <div
+                            class="news-side <?php echo $index > 0 ? 'mt-4' : ''; ?>"
+                        >
+
+
+                            <!-- THUMBNAIL -->
+
+                            <div class="news-thumb">
+
+                                <?php if (!empty($berita['gambar'])): ?>
+
+                                    <img
+                                        src="uploads/berita/<?php echo e($berita['gambar']); ?>"
+                                        alt="<?php echo e($berita['judul']); ?>"
+                                    >
+
+                                <?php else: ?>
+
+                                    <img
+                                        src="assets/images/news/news2.jpg"
+                                        alt="<?php echo e($berita['judul']); ?>"
+                                    >
+
+                                <?php endif; ?>
+
+                            </div>
+
+
+                            <!-- INFO -->
+
+                            <div class="news-info">
+
+
+                                <span>
+
+                                    <?php
+                                    echo e(
+                                        formatTanggalIndonesia(
+                                            $berita['created_at']
+                                        )
+                                    );
+                                    ?>
+
+                                </span>
+
+
+                                <h5>
+
+                                    <?php
+                                    echo e(
+                                        $berita['judul']
+                                    );
+                                    ?>
+
+                                </h5>
+
+
+                                <a
+                                    href="berita-detail.php?id=<?php echo (int) $berita['id']; ?>"
+                                >
+
+                                    Selengkapnya →
+
+                                </a>
+
+
+                            </div>
 
                         </div>
 
-                        <div class="news-info">
 
-                            <span>
-                                24 Juli 2026
-                            </span>
+                    <?php endforeach; ?>
 
-                            <h5>
-                                Pelaksanaan Sertifikasi Bidang Cyber Security
-                            </h5>
-
-                            <a href="#">
-                                Selengkapnya →
-                            </a>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="news-side mt-4">
-
-                        <div class="news-thumb">
-
-                            <img
-                                src="assets/images/news/news3.jpg"
-                                alt="News">
-
-                        </div>
-
-                        <div class="news-info">
-
-                            <span>
-                                20 Juli 2026
-                            </span>
-
-                            <h5>
-                                Pembukaan Pendaftaran Asesor Kompetensi Tahun 2026
-                            </h5>
-
-                            <a href="#">
-                                Selengkapnya →
-                            </a>
-
-                        </div>
-
-                    </div>
 
                 </div>
 
             </div>
 
 
+        <?php else: ?>
+
+
+            <!-- =================================================
+                 BELUM ADA BERITA
+            ================================================== -->
+
             <div class="text-center mt-5">
 
-                <a href="berita.php" class="btn-news">
+                <div class="py-5">
 
-                    Lihat Semua Berita
+                    <i
+                        class="bi bi-newspaper"
+                        style="font-size: 50px;"
+                    ></i>
 
-                    <i class="bi bi-arrow-right-circle-fill"></i>
+                    <h4 class="mt-3">
 
-                </a>
+                        Belum Ada Berita
+
+                    </h4>
+
+                    <p>
+
+                        Belum ada berita yang dipublikasikan
+                        oleh LSP PPPOLRI.
+
+                    </p>
+
+                </div>
 
             </div>
 
+
+        <?php endif; ?>
+
+
+        <!-- =================================================
+             LIHAT SEMUA BERITA
+        ================================================== -->
+
+        <div class="text-center mt-5">
+
+            <a
+                href="berita.php"
+                class="btn-news"
+            >
+
+                Lihat Semua Berita
+
+                <i class="bi bi-arrow-right-circle-fill"></i>
+
+            </a>
+
         </div>
 
-    </section>
+
+    </div>
+
+</section>
 
 
 

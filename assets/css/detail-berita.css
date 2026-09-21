@@ -1,0 +1,542 @@
+/* ==========================================================
+   DETAIL BERITA - LSP PPPOLRI
+   File: detail-berita.css
+========================================================== */
+
+/* ==========================================================
+   GLOBAL
+========================================================== */
+
+.detail-news-section {
+  padding: 70px 0 80px;
+  background: #f8f9fa;
+  overflow: hidden;
+}
+
+/* ==========================================================
+   BREADCRUMB
+========================================================== */
+
+.detail-news-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin-bottom: 35px;
+
+  font-size: 14px;
+  color: #777;
+}
+
+.detail-news-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  color: #72000e;
+  text-decoration: none;
+
+  font-weight: 500;
+
+  transition: 0.3s ease;
+}
+
+.detail-news-breadcrumb a:hover {
+  color: #a00016;
+}
+
+.detail-news-breadcrumb > i {
+  font-size: 11px;
+  color: #aaa;
+}
+
+.detail-news-breadcrumb span {
+  color: #777;
+}
+
+/* ==========================================================
+   DETAIL NEWS CONTAINER
+========================================================== */
+
+.detail-news {
+  max-width: 1050px;
+
+  margin: 0 auto;
+
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  padding: 45px;
+
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+}
+
+/* ==========================================================
+   META
+========================================================== */
+
+.detail-news-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 15px;
+
+  margin-bottom: 18px;
+}
+
+.detail-news-category {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 7px 15px;
+
+  border-radius: 50px;
+
+  background: rgba(114, 0, 14, 0.08);
+
+  color: #72000e;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.detail-news-date {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: #777;
+
+  font-size: 14px;
+}
+
+/* ==========================================================
+   TITLE
+========================================================== */
+
+.detail-news-title {
+  margin: 0 0 30px;
+
+  max-width: 900px;
+
+  color: #222;
+
+  font-size: 38px;
+
+  line-height: 1.3;
+
+  font-weight: 700;
+}
+
+/* ==========================================================
+   MAIN IMAGE
+========================================================== */
+
+.detail-news-image {
+  width: 100%;
+
+  margin-bottom: 35px;
+
+  overflow: hidden;
+
+  border-radius: 15px;
+
+  background: #f1f3f5;
+}
+
+.detail-news-image img {
+  display: block;
+
+  width: 100%;
+
+  height: auto;
+
+  max-height: 580px;
+
+  object-fit: cover;
+}
+
+/* ==========================================================
+   CONTENT
+========================================================== */
+
+.detail-news-content {
+  color: #444;
+
+  font-size: 16px;
+
+  line-height: 1.9;
+
+  word-wrap: break-word;
+
+  overflow-wrap: break-word;
+}
+
+.detail-news-content p {
+  margin-bottom: 20px;
+}
+
+.detail-news-content strong {
+  color: #222;
+}
+
+.detail-news-content a {
+  color: #72000e;
+
+  font-weight: 500;
+
+  text-decoration: underline;
+}
+
+/* ==========================================================
+   FOOTER DETAIL
+========================================================== */
+
+.detail-news-footer {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  margin-top: 45px;
+
+  padding-top: 25px;
+
+  border-top: 1px solid #eeeeee;
+}
+
+/* ==========================================================
+   BACK BUTTON
+========================================================== */
+
+.detail-news-back {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 12px 20px;
+
+  border-radius: 8px;
+
+  background: #72000e;
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.detail-news-back:hover {
+  background: #57000b;
+
+  color: #ffffff;
+
+  transform: translateX(-3px);
+}
+
+/* ==========================================================
+   CTA
+========================================================== */
+
+.detail-news-cta {
+  padding: 0 0 80px;
+
+  background: #f8f9fa;
+}
+
+.detail-news-cta-wrapper {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 35px;
+
+  padding: 45px 50px;
+
+  border-radius: 18px;
+
+  background: #72000e;
+
+  box-shadow: 0 10px 35px rgba(114, 0, 14, 0.15);
+}
+
+.detail-news-cta-wrapper .section-subtitle {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.detail-news-cta-wrapper h2 {
+  margin: 0 0 10px;
+
+  color: #ffffff;
+
+  font-size: 28px;
+
+  font-weight: 600;
+}
+
+.detail-news-cta-wrapper p {
+  margin: 0;
+
+  max-width: 650px;
+
+  color: rgba(255, 255, 255, 0.8);
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+/* ==========================================================
+   CTA BUTTON
+========================================================== */
+
+.detail-news-cta-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  white-space: nowrap;
+
+  padding: 13px 22px;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #72000e;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.detail-news-cta-btn:hover {
+  color: #72000e;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 991.98px) {
+  .detail-news-section {
+    padding: 55px 0 65px;
+  }
+
+  .detail-news {
+    padding: 35px;
+  }
+
+  .detail-news-title {
+    font-size: 32px;
+  }
+
+  .detail-news-image img {
+    max-height: 480px;
+  }
+
+  .detail-news-cta {
+    padding-bottom: 65px;
+  }
+
+  .detail-news-cta-wrapper {
+    padding: 35px;
+  }
+}
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 767.98px) {
+  .detail-news-section {
+    padding: 40px 0 50px;
+  }
+
+  /* BREADCRUMB */
+
+  .detail-news-breadcrumb {
+    margin-bottom: 25px;
+
+    gap: 7px;
+
+    font-size: 12px;
+  }
+
+  /* DETAIL CARD */
+
+  .detail-news {
+    width: 100%;
+
+    padding: 22px 18px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.05);
+  }
+
+  /* META */
+
+  .detail-news-meta {
+    gap: 9px;
+
+    margin-bottom: 15px;
+  }
+
+  .detail-news-category {
+    padding: 6px 11px;
+
+    font-size: 11px;
+  }
+
+  .detail-news-date {
+    font-size: 12px;
+  }
+
+  /* TITLE */
+
+  .detail-news-title {
+    margin-bottom: 22px;
+
+    font-size: 25px;
+
+    line-height: 1.35;
+  }
+
+  /* IMAGE */
+
+  .detail-news-image {
+    margin-bottom: 25px;
+
+    border-radius: 10px;
+  }
+
+  .detail-news-image img {
+    width: 100%;
+
+    max-height: 320px;
+
+    object-fit: cover;
+  }
+
+  /* CONTENT */
+
+  .detail-news-content {
+    font-size: 14px;
+
+    line-height: 1.8;
+  }
+
+  /* BACK */
+
+  .detail-news-footer {
+    margin-top: 30px;
+
+    padding-top: 20px;
+  }
+
+  .detail-news-back {
+    padding: 10px 16px;
+
+    font-size: 13px;
+  }
+
+  /* CTA */
+
+  .detail-news-cta {
+    padding-bottom: 50px;
+  }
+
+  .detail-news-cta-wrapper {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding: 28px 22px;
+
+    border-radius: 12px;
+
+    gap: 22px;
+  }
+
+  .detail-news-cta-wrapper h2 {
+    font-size: 23px;
+
+    line-height: 1.4;
+  }
+
+  .detail-news-cta-wrapper p {
+    font-size: 13px;
+  }
+
+  .detail-news-cta-btn {
+    padding: 11px 17px;
+
+    font-size: 13px;
+  }
+}
+
+/* ==========================================================
+   SMALL MOBILE
+========================================================== */
+
+@media (max-width: 400px) {
+  .detail-news-section {
+    padding-top: 30px;
+  }
+
+  .detail-news {
+    padding: 18px 15px;
+  }
+
+  .detail-news-title {
+    font-size: 22px;
+  }
+
+  .detail-news-content {
+    font-size: 13.5px;
+  }
+
+  .detail-news-cta-wrapper {
+    padding: 24px 18px;
+  }
+
+  .detail-news-cta-wrapper h2 {
+    font-size: 21px;
+  }
+}
