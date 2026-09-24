@@ -1,0 +1,629 @@
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.pendaftaran-content {
+  padding: 25px 30px 35px;
+}
+
+/* =====================================================
+   PAGE HEADING
+===================================================== */
+
+.page-heading {
+  margin-bottom: 25px;
+}
+
+.page-label {
+  display: inline-block;
+
+  margin-bottom: 6px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.8px;
+
+  color: #72000e;
+}
+
+.page-heading h1 {
+  margin: 0 0 6px;
+
+  font-size: 24px;
+
+  font-weight: 700;
+
+  color: #222222;
+}
+
+.page-heading p {
+  margin: 0;
+
+  font-size: 14px;
+
+  color: #6b7280;
+}
+
+/* =====================================================
+   STATISTICS
+===================================================== */
+
+.registration-statistics {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+
+  margin-bottom: 22px;
+}
+
+.registration-stat-card {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 12px;
+
+  transition: 0.2s ease;
+}
+
+.registration-stat-card:hover {
+  border-color: #d5d5d5;
+
+  transform: translateY(-1px);
+}
+
+.registration-stat-info {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.registration-stat-info span {
+  font-size: 13px;
+
+  color: #6b7280;
+}
+
+.registration-stat-info strong {
+  font-size: 24px;
+
+  font-weight: 700;
+
+  color: #222222;
+}
+
+.registration-stat-icon {
+  width: 46px;
+
+  height: 46px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #f1f3f5;
+
+  color: #72000e;
+
+  font-size: 20px;
+}
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+.registration-filter {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 18px;
+
+  margin-bottom: 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 12px;
+}
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.registration-search {
+  position: relative;
+
+  flex: 1;
+}
+
+.registration-search i {
+  position: absolute;
+
+  top: 50%;
+
+  left: 13px;
+
+  transform: translateY(-50%);
+
+  color: #8a8a8a;
+
+  font-size: 15px;
+
+  pointer-events: none;
+}
+
+.registration-search input {
+  width: 100%;
+
+  height: 42px;
+
+  padding: 0 14px 0 38px;
+
+  border: 1px solid #ced4da;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: #333333;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  outline: none;
+}
+
+.registration-search input:focus {
+  border-color: #72000e;
+
+  box-shadow: 0 0 0 2px rgba(114, 0, 14, 0.08);
+}
+
+.registration-search input::placeholder {
+  color: #9a9a9a;
+}
+
+/* =====================================================
+   SELECT STATUS
+===================================================== */
+
+.registration-filter select {
+  width: 190px;
+
+  height: 42px;
+
+  padding: 0 12px;
+
+  border: 1px solid #ced4da;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: #333333;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  outline: none;
+
+  cursor: pointer;
+}
+
+.registration-filter select:focus {
+  border-color: #72000e;
+
+  box-shadow: 0 0 0 2px rgba(114, 0, 14, 0.08);
+}
+
+/* =====================================================
+   FILTER BUTTON
+===================================================== */
+
+.btn-filter {
+  height: 42px;
+
+  padding: 0 17px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: #72000e;
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition: 0.2s ease;
+}
+
+.btn-filter:hover {
+  background: #5d000b;
+}
+
+/* =====================================================
+   TABLE CARD
+===================================================== */
+
+.registration-table-card {
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+}
+
+/* =====================================================
+   TABLE HEADER
+===================================================== */
+
+.registration-table-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 18px 20px;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.registration-table-header h3 {
+  margin: 0;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  color: #222222;
+}
+
+.registration-table-header span {
+  font-size: 13px;
+
+  color: #777777;
+}
+
+/* =====================================================
+   TABLE WRAPPER
+===================================================== */
+
+.registration-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.registration-table {
+  width: 100%;
+
+  min-width: 900px;
+
+  border-collapse: collapse;
+}
+
+.registration-table thead th {
+  padding: 13px 15px;
+
+  background: #f8f9fa;
+
+  border-bottom: 1px solid #dee2e6;
+
+  color: #555555;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  text-align: left;
+
+  white-space: nowrap;
+}
+
+.registration-table tbody td {
+  padding: 14px 15px;
+
+  border-bottom: 1px solid #eeeeee;
+
+  color: #333333;
+
+  font-size: 14px;
+
+  vertical-align: middle;
+}
+
+.registration-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.registration-table tbody tr:hover {
+  background: #fafafa;
+}
+
+/* =====================================================
+   NOMOR PENDAFTARAN
+===================================================== */
+
+.registration-number {
+  display: inline-block;
+
+  font-weight: 600;
+
+  color: #72000e;
+
+  white-space: nowrap;
+}
+
+/* =====================================================
+   PARTICIPANT NAME
+===================================================== */
+
+.participant-name {
+  display: inline-block;
+
+  font-weight: 600;
+
+  color: #333333;
+}
+
+/* =====================================================
+   SCHEME NAME
+===================================================== */
+
+.scheme-name {
+  display: inline-block;
+
+  max-width: 240px;
+
+  line-height: 1.5;
+
+  color: #444444;
+}
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.registration-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 6px 11px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+/* DIAJUKAN */
+
+.status-pending {
+  background: #fff3cd;
+
+  color: #856404;
+}
+
+/* VERIFIKASI */
+
+.status-verifikasi {
+  background: #cff4fc;
+
+  color: #055160;
+}
+
+/* DISETUJUI */
+
+.status-approved {
+  background: #d1e7dd;
+
+  color: #0f5132;
+}
+
+/* DITOLAK */
+
+.status-rejected {
+  background: #f8d7da;
+
+  color: #842029;
+}
+
+/* =====================================================
+   BUTTON DETAIL
+===================================================== */
+
+.btn-detail {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 5px;
+
+  padding: 7px 12px;
+
+  border: 1px solid #dee2e6;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #333333;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition: 0.2s ease;
+}
+
+.btn-detail:hover {
+  background: #72000e;
+
+  border-color: #72000e;
+
+  color: #ffffff;
+}
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+.registration-empty {
+  padding: 55px 20px;
+
+  text-align: center;
+
+  color: #777777;
+}
+
+.registration-empty i {
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-size: 42px;
+
+  color: #adb5bd;
+}
+
+.registration-empty h4 {
+  margin: 0 0 6px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  color: #555555;
+}
+
+.registration-empty p {
+  margin: 0;
+
+  font-size: 14px;
+
+  color: #888888;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 992px) {
+  .registration-statistics {
+    grid-template-columns: 1fr;
+  }
+
+  .registration-filter {
+    flex-wrap: wrap;
+  }
+
+  .registration-search {
+    flex: 1 1 100%;
+  }
+
+  .registration-filter select {
+    flex: 1;
+
+    width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .pendaftaran-content {
+    padding: 20px 15px 30px;
+  }
+
+  .page-heading h1 {
+    font-size: 21px;
+  }
+
+  .registration-table-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .registration-filter {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .registration-search {
+    width: 100%;
+  }
+
+  .registration-filter select {
+    width: 100%;
+  }
+
+  .btn-filter {
+    width: 100%;
+  }
+
+  .registration-stat-card {
+    padding: 17px;
+  }
+}

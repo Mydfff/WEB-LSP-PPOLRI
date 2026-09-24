@@ -1,69 +1,69 @@
-
 <!-- =====================================================
      VISI & MISI LSP PPPOLRI
 ====================================================== -->
 
 <section class="profil-section">
+<div class="container">
 
-    <div class="container">
+    <!-- PAGE HEADER -->
+    <div class="profil-header text-center">
 
-        <!-- PAGE HEADER -->
-        <div class="profil-header text-center">
+        <span class="profil-subtitle">
+            Visi & Misi
+        </span>
 
-            <span class="profil-subtitle">
-                Visi & Misi
-            </span>
+        <h1 class="profil-title">
+            Visi dan Misi LSP P-2 Sekuriti PP Polri
+        </h1>
 
-            <h1 class="profil-title">
-                Visi dan Misi LSP PPPOLRI
-            </h1>
+        <p class="profil-description">
+            Landasan dan arah LSP P-2 Sekuriti PP Polri dalam
+            menyelenggarakan sertifikasi kompetensi di bidang
+            sektor jasa pengamanan.
+        </p>
 
-            <p class="profil-description">
-                Landasan dan arah LSP PPPOLRI dalam melaksanakan
-                sertifikasi kompetensi secara profesional.
-            </p>
-
-        </div>
+    </div>
 
 
-        <!-- VISI -->
-        <div class="profil-role">
+    <!-- =================================================
+         VISI
+    ================================================== -->
+    <div class="profil-role">
 
-            <div class="row align-items-center">
+        <div class="row align-items-center">
 
-                <div class="col-lg-2">
+            <div class="col-lg-2">
 
-                    <div class="profil-role-icon">
+                <div class="profil-role-icon">
 
-                        <i class="bi bi-eye-fill"></i>
-
-                    </div>
+                    <i class="bi bi-eye-fill"></i>
 
                 </div>
 
+            </div>
 
-                <div class="col-lg-10">
 
-                    <div class="profil-role-content">
+            <div class="col-lg-10">
 
-                        <span class="profil-label">
-                            Visi
-                        </span>
+                <div class="profil-role-content">
 
-                        <h2>
-                            Menjadi Lembaga Sertifikasi Profesi
-                            yang Profesional dan Terpercaya
-                        </h2>
+                    <span class="profil-label">
+                        Visi
+                    </span>
 
-                        <p>
-                            Menjadi lembaga sertifikasi profesi yang
-                            profesional, terpercaya, dan mampu memberikan
-                            kontribusi dalam mewujudkan sumber daya manusia
-                            yang kompeten sesuai dengan standar kompetensi
-                            yang berlaku.
-                        </p>
+                    <h2>
+                        Lembaga Sertifikasi Profesi
+                        di Bidang Sektor Jasa Pengamanan
+                    </h2>
 
-                    </div>
+                    <p>
+                        Menjadi Lembaga Sertifikasi Profesi dibidang
+                        Sektor Jasa Pengamanan yang berintegritas,
+                        mandiri dan terpercaya dengan kinerja prima
+                        yang diakui di tingkat Nasional maupun
+                        Internasional serta berwawasan Keamanan
+                        berbasis masyarakat.
+                    </p>
 
                 </div>
 
@@ -71,100 +71,106 @@
 
         </div>
 
-
-        <!-- MISI -->
-        <div class="profil-about">
-
-            <div class="row align-items-center">
+    </div>
 
 
-                <!-- ICON -->
+    <!-- =================================================
+         MISI
+    ================================================== -->
+    <div class="profil-about">
 
-                <div class="col-lg-6">
+        <div class="row align-items-center">
 
-                    <div class="profil-image profil-misi-icon">
+            <!-- ICON -->
+            <div class="col-lg-6">
 
-                        <i class="bi bi-bullseye"></i>
+                <div class="profil-image profil-misi-icon">
 
-                    </div>
+                    <i class="bi bi-bullseye"></i>
 
                 </div>
 
-
-                <!-- CONTENT -->
-
-                <div class="col-lg-6">
-
-                    <div class="profil-content">
-
-                        <span class="profil-label">
-                            Misi
-                        </span>
-
-                        <h2>
-                            Komitmen LSP PPPOLRI
-                        </h2>
-
-                        <div class="profil-misi-list">
-
-                            <div class="profil-misi-item">
-
-                                <span class="profil-misi-number">
-                                    01
-                                </span>
-
-                                <p>
-                                    Melaksanakan sertifikasi kompetensi
-                                    secara profesional, objektif, dan
-                                    transparan.
-                                </p>
-
-                            </div>
+            </div>
 
 
-                            <div class="profil-misi-item">
+            <!-- CONTENT -->
+            <div class="col-lg-6">
 
-                                <span class="profil-misi-number">
-                                    02
-                                </span>
+                <div class="profil-content">
 
-                                <p>
-                                    Menjamin pelaksanaan sertifikasi
-                                    sesuai dengan standar dan ketentuan
-                                    yang berlaku.
-                                </p>
+                    <span class="profil-label">
+                        Misi
+                    </span>
 
-                            </div>
-
-
-                            <div class="profil-misi-item">
-
-                                <span class="profil-misi-number">
-                                    03
-                                </span>
-
-                                <p>
-                                    Meningkatkan kualitas sumber daya
-                                    manusia melalui pengakuan kompetensi
-                                    yang terukur.
-                                </p>
-
-                            </div>
+                    <h2>
+                        Komitmen LSP P-2 Sekuriti PP Polri
+                    </h2>
 
 
-                            <div class="profil-misi-item">
+                    <div class="profil-misi-list">
 
-                                <span class="profil-misi-number">
-                                    04
-                                </span>
+                        <!-- MISI 01 -->
+                        <div class="profil-misi-item">
 
-                                <p>
-                                    Memberikan pelayanan sertifikasi
-                                    yang berkualitas dan berorientasi
-                                    pada kepuasan peserta.
-                                </p>
+                            <span class="profil-misi-number">
+                                01
+                            </span>
 
-                            </div>
+                            <p>
+                                Menyelenggarakan proses Sertifikasi
+                                Kompetensi yang profesional,
+                                independen dan transparan sesuai
+                                dengan standar yang berlaku.
+                            </p>
+
+                        </div>
+
+
+                        <!-- MISI 02 -->
+                        <div class="profil-misi-item">
+
+                            <span class="profil-misi-number">
+                                02
+                            </span>
+
+                            <p>
+                                Mengembangkan dan memelihara Skema
+                                Sertifikasi yang relevan dengan
+                                kebutuhan industri dan pasar kerja.
+                            </p>
+
+                        </div>
+
+
+                        <!-- MISI 03 -->
+                        <div class="profil-misi-item">
+
+                            <span class="profil-misi-number">
+                                03
+                            </span>
+
+                            <p>
+                                Memperluas jangkauan layanan sertifikasi
+                                ke seluruh wilayah Indonesia dan
+                                meningkatkan kesadaran masyarakat akan
+                                pentingnya Sertifikasi Kompetensi.
+                            </p>
+
+                        </div>
+
+
+                        <!-- MISI 04 -->
+                        <div class="profil-misi-item">
+
+                            <span class="profil-misi-number">
+                                04
+                            </span>
+
+                            <p>
+                                Meningkatkan kualitas Kompetensi Asesor
+                                dan memastikan proses sertifikasi
+                                berjalan dengan efektif dan efisien.
+                            </p>
 
                         </div>
 
@@ -178,5 +184,5 @@
 
     </div>
 
+</div>
 </section>
-

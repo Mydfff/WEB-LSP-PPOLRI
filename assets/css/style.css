@@ -388,3 +388,221 @@ body {
     font-size: 28px;
   }
 }
+
+/* =====================================================
+   GALERI PAGE
+===================================================== */
+
+.galeri-page {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 0;
+  background: var(--bg);
+}
+
+.galeri-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 55px 50px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================
+   ICON
+========================= */
+
+.galeri-icon {
+  width: 85px;
+  height: 85px;
+  margin: 0 auto 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(114, 0, 14, 0.08);
+  color: var(--primary);
+
+  border-radius: 50%;
+
+  font-size: 38px;
+}
+
+/* =========================
+   SUBTITLE
+========================= */
+
+.galeri-subtitle {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: var(--primary);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.galeri-title {
+  margin-bottom: 18px;
+
+  color: #222222;
+
+  font-size: 32px;
+  font-weight: 600;
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.galeri-description {
+  max-width: 600px;
+  margin: 0 auto;
+
+  color: #666666;
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* =========================
+   STATUS BOX
+========================= */
+
+.galeri-status {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  margin: 30px 0;
+  padding: 22px;
+
+  text-align: left;
+
+  background: #f8f9fa;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+/* =========================
+   STATUS ICON
+========================= */
+
+.galeri-status-icon {
+  flex-shrink: 0;
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(114, 0, 14, 0.08);
+  color: var(--primary);
+
+  border-radius: 50%;
+
+  font-size: 20px;
+}
+
+/* =========================
+   STATUS TEXT
+========================= */
+
+.galeri-status-text h5 {
+  margin-bottom: 6px;
+
+  color: #333333;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.galeri-status-text p {
+  margin: 0;
+
+  color: #666666;
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.galeri-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 11px 24px;
+
+  background: var(--primary);
+  color: #ffffff;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+.galeri-button:hover {
+  background: #5a000b;
+  color: #ffffff;
+
+  transform: translateY(-2px);
+}
+
+/* =====================================================
+   GALERI RESPONSIVE
+===================================================== */
+
+@media (max-width: 576px) {
+  .galeri-page {
+    padding: 50px 15px;
+  }
+
+  .galeri-content {
+    padding: 40px 25px;
+  }
+
+  .galeri-title {
+    font-size: 26px;
+  }
+
+  .galeri-description {
+    font-size: 14px;
+  }
+
+  .galeri-status {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .galeri-status-text h5 {
+    font-size: 15px;
+  }
+
+  .galeri-status-text p {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,2202 @@
+/* =====================================================
+   PENDAFTARAN SERTIFIKASI
+===================================================== */
+
+.pendaftaran-page {
+  padding: 70px 0 90px;
+  background: #f1f3f5;
+  min-height: 100vh;
+}
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.pendaftaran-header {
+  max-width: 800px;
+  margin: 0 auto 45px;
+}
+
+.pendaftaran-subtitle {
+  display: inline-block;
+  margin-bottom: 10px;
+
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+
+  color: #72000e;
+}
+
+.pendaftaran-header h1 {
+  margin-bottom: 15px;
+
+  font-size: 36px;
+  font-weight: 700;
+
+  color: #222;
+}
+
+.pendaftaran-header p {
+  margin: 0;
+
+  font-size: 15px;
+  line-height: 1.8;
+
+  color: #666;
+}
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.registration-progress {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  margin-bottom: 45px;
+  padding: 25px 30px;
+
+  background: #fff;
+
+  border-radius: 16px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+
+  overflow-x: auto;
+}
+
+.progress-item {
+  min-width: 90px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+.progress-number {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f1f3f5;
+  border: 1px solid #d9dde1;
+
+  color: #777;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  margin-bottom: 8px;
+}
+
+.progress-item span {
+  font-size: 11px;
+  font-weight: 500;
+
+  color: #777;
+
+  white-space: nowrap;
+}
+
+.progress-item.active .progress-number {
+  background: #72000e;
+  border-color: #72000e;
+
+  color: #fff;
+}
+
+.progress-item.active span {
+  color: #72000e;
+  font-weight: 600;
+}
+
+.progress-line {
+  width: 45px;
+  height: 1px;
+
+  margin-top: 20px;
+
+  background: #d5d9dd;
+
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   INFO
+===================================================== */
+
+.registration-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+
+  margin-bottom: 35px;
+  padding: 22px 25px;
+
+  background: #fff;
+
+  border-left: 4px solid #72000e;
+  border-radius: 10px;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+}
+
+.registration-info-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #f7e8ea;
+
+  color: #72000e;
+
+  font-size: 20px;
+}
+
+.registration-info h5 {
+  margin: 0 0 6px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  color: #222;
+}
+
+.registration-info p {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.7;
+
+  color: #666;
+}
+
+/* =====================================================
+   SKEMA CARD
+===================================================== */
+
+.skema-registration-card {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 28px;
+
+  background: #fff;
+
+  border: 1px solid #e5e7e9;
+  border-radius: 15px;
+
+  transition: all 0.3s ease;
+}
+
+.skema-registration-card:hover {
+  transform: translateY(-5px);
+
+  border-color: #72000e;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.skema-card-icon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 20px;
+
+  border-radius: 12px;
+
+  background: #f7e8ea;
+
+  color: #72000e;
+
+  font-size: 23px;
+}
+
+.skema-card-content {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+}
+
+.skema-card-content h3 {
+  margin-bottom: 12px;
+
+  font-size: 19px;
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  color: #222;
+}
+
+.skema-card-content p {
+  margin-bottom: 25px;
+
+  font-size: 13px;
+  line-height: 1.7;
+
+  color: #666;
+
+  flex: 1;
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.btn-pilih-skema {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 100%;
+
+  padding: 11px 18px;
+
+  background: #72000e;
+  border: 1px solid #72000e;
+
+  border-radius: 7px;
+
+  color: #fff;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  transition: all 0.3s ease;
+}
+
+.btn-pilih-skema:hover {
+  background: #5c000b;
+  border-color: #5c000b;
+
+  color: #fff;
+}
+
+.btn-pilih-skema i {
+  transition: transform 0.3s ease;
+}
+
+.btn-pilih-skema:hover i {
+  transform: translateX(4px);
+}
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+.skema-empty {
+  padding: 60px 30px;
+
+  text-align: center;
+
+  background: #fff;
+
+  border-radius: 15px;
+
+  border: 1px solid #e5e7e9;
+}
+
+.skema-empty i {
+  font-size: 45px;
+  color: #aaa;
+}
+
+.skema-empty h3 {
+  margin: 15px 0 8px;
+
+  font-size: 20px;
+  font-weight: 600;
+
+  color: #333;
+}
+
+.skema-empty p {
+  margin: 0;
+
+  font-size: 13px;
+
+  color: #777;
+}
+
+/* =====================================================
+   NOTE
+===================================================== */
+
+.registration-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  margin-top: 35px;
+  padding: 20px 25px;
+
+  background: #fff;
+
+  border-radius: 10px;
+
+  border: 1px solid #e5e7e9;
+}
+
+.registration-note i {
+  margin-top: 2px;
+
+  color: #72000e;
+
+  font-size: 18px;
+}
+
+.registration-note p {
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 1.7;
+
+  color: #666;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 992px) {
+  .registration-progress {
+    justify-content: flex-start;
+  }
+
+  .pendaftaran-header h1 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .pendaftaran-page {
+    padding: 50px 0 70px;
+  }
+
+  .pendaftaran-header {
+    margin-bottom: 30px;
+  }
+
+  .pendaftaran-header h1 {
+    font-size: 26px;
+  }
+
+  .pendaftaran-header p {
+    font-size: 13px;
+  }
+
+  .registration-progress {
+    padding: 20px;
+  }
+
+  .progress-item {
+    min-width: 80px;
+  }
+
+  .progress-line {
+    width: 25px;
+  }
+
+  .registration-info {
+    padding: 18px;
+  }
+
+  .skema-registration-card {
+    padding: 22px;
+  }
+}
+
+/* =====================================================
+   ACCOUNT REGISTRATION
+===================================================== */
+
+.account-registration-card {
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  padding: 45px;
+
+  background: #fff;
+
+  border-radius: 16px;
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* =====================================================
+   ACCOUNT HEADER
+===================================================== */
+
+.account-header {
+  margin-bottom: 30px;
+}
+
+.account-subtitle {
+  display: inline-block;
+
+  margin-bottom: 8px;
+
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+
+  color: #72000e;
+}
+
+.account-header h1 {
+  margin-bottom: 8px;
+
+  font-size: 30px;
+  font-weight: 700;
+
+  color: #222;
+}
+
+.account-header p {
+  margin: 0;
+
+  font-size: 14px;
+
+  color: #666;
+}
+
+/* =====================================================
+   SELECTED SKEMA
+===================================================== */
+
+.selected-skema {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 32px;
+  padding: 18px 20px;
+
+  background: #f5f7f9;
+
+  border: 1px solid #e4e7ea;
+
+  border-radius: 10px;
+}
+
+.selected-skema-icon {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 8px;
+
+  background: #e7f0fb;
+
+  color: #285b91;
+
+  font-size: 20px;
+}
+
+.selected-skema-content {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.selected-skema-content span {
+  font-size: 11px;
+
+  color: #777;
+}
+
+.selected-skema-content strong {
+  font-size: 14px;
+
+  color: #285b91;
+}
+
+/* =====================================================
+   FORM GROUP
+===================================================== */
+
+.form-group-registration {
+  margin-bottom: 23px;
+}
+
+.form-group-registration label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #333;
+}
+
+.form-group-registration label span {
+  color: #72000e;
+}
+
+.form-group-registration .form-control {
+  min-height: 46px;
+
+  padding: 11px 14px;
+
+  border: 1px solid #dcdfe3;
+
+  border-radius: 7px;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 13px;
+
+  color: #333;
+
+  box-shadow: none;
+}
+
+.form-group-registration .form-control:focus {
+  border-color: #72000e;
+
+  box-shadow: 0 0 0 3px rgba(114, 0, 14, 0.08);
+}
+
+.form-group-registration small {
+  display: block;
+
+  margin-top: 6px;
+
+  font-size: 11px;
+
+  color: #777;
+}
+
+/* =====================================================
+   PASSWORD
+===================================================== */
+
+.password-input {
+  position: relative;
+}
+
+.password-input .form-control {
+  padding-right: 48px;
+}
+
+.password-toggle {
+  position: absolute;
+
+  top: 50%;
+  right: 13px;
+
+  transform: translateY(-50%);
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #777;
+
+  font-size: 17px;
+
+  cursor: pointer;
+}
+
+.password-toggle:hover {
+  color: #72000e;
+}
+
+/* =====================================================
+   AGREEMENT
+===================================================== */
+
+.account-agreement {
+  margin-top: 10px;
+  margin-bottom: 30px;
+
+  padding: 15px;
+
+  background: #f8f9fa;
+
+  border-radius: 8px;
+}
+
+.account-agreement .form-check {
+  display: flex;
+
+  gap: 8px;
+}
+
+.account-agreement .form-check-input {
+  margin-top: 4px;
+
+  flex-shrink: 0;
+}
+
+.account-agreement .form-check-input:checked {
+  background-color: #72000e;
+
+  border-color: #72000e;
+}
+
+.account-agreement .form-check-label {
+  font-size: 12px;
+
+  line-height: 1.7;
+
+  color: #666;
+}
+
+/* =====================================================
+   ACTION
+===================================================== */
+
+.account-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: 10px;
+
+  border-top: 1px solid #eee;
+}
+
+.btn-back-registration,
+.btn-next-registration {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  min-height: 43px;
+
+  padding: 10px 20px;
+
+  border-radius: 7px;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+.btn-back-registration {
+  background: #e9eef3;
+
+  color: #68737d;
+}
+
+.btn-back-registration:hover {
+  background: #dde3e8;
+
+  color: #4e5861;
+}
+
+.btn-next-registration {
+  border: 1px solid #72000e;
+
+  background: #72000e;
+
+  color: #fff;
+}
+
+.btn-next-registration:hover {
+  border-color: #5c000b;
+
+  background: #5c000b;
+
+  color: #fff;
+}
+
+/* =====================================================
+   COMPLETED PROGRESS
+===================================================== */
+
+.progress-item.completed .progress-number {
+  background: #198754;
+
+  border-color: #198754;
+
+  color: #fff;
+}
+
+.progress-line.active {
+  background: #72000e;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 576px) {
+  .account-registration-card {
+    padding: 25px 20px;
+  }
+
+  .account-header h1 {
+    font-size: 25px;
+  }
+
+  .selected-skema {
+    align-items: flex-start;
+  }
+
+  .account-actions {
+    gap: 15px;
+  }
+
+  .btn-back-registration,
+  .btn-next-registration {
+    flex: 1;
+  }
+}
+
+/* =====================================================
+   FORMULIR PENDAFTARAN
+===================================================== */
+
+.formulir-header {
+  max-width: 850px;
+
+  margin: 0 auto 30px;
+
+  text-align: center;
+}
+
+.formulir-header > span {
+  display: inline-block;
+
+  margin-bottom: 8px;
+
+  color: #72000e;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  letter-spacing: 1.4px;
+}
+
+.formulir-header h1 {
+  margin-bottom: 10px;
+
+  color: #222;
+
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.formulir-header p {
+  margin: 0;
+
+  color: #666;
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* =====================================================
+   SELECTED SKEMA
+===================================================== */
+
+.formulir-skema {
+  max-width: 900px;
+
+  margin: 0 auto 25px;
+}
+
+/* =====================================================
+   FORM SECTION
+===================================================== */
+
+.form-section-card {
+  max-width: 900px;
+
+  margin: 0 auto 25px;
+
+  padding: 30px;
+
+  background: #fff;
+
+  border: 1px solid #e5e7e9;
+
+  border-radius: 14px;
+
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.04);
+}
+
+/* =====================================================
+   SECTION TITLE
+===================================================== */
+
+.form-section-title {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 15px;
+
+  margin-bottom: 30px;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid #eee;
+}
+
+.form-section-number {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #72000e;
+
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-section-title h2 {
+  margin: 0 0 5px;
+
+  color: #222;
+
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.form-section-title p {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 12px;
+}
+
+/* =====================================================
+   FORM LABEL
+===================================================== */
+
+.form-label-registration {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #333;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.form-label-registration span {
+  color: #72000e;
+}
+
+.form-section-card .form-control,
+.form-section-card .form-select {
+  min-height: 44px;
+
+  border-color: #dcdfe3;
+
+  border-radius: 7px;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 12px;
+
+  box-shadow: none;
+}
+
+.form-section-card textarea.form-control {
+  min-height: 90px;
+}
+
+.form-section-card .form-control:focus,
+.form-section-card .form-select:focus {
+  border-color: #72000e;
+
+  box-shadow: 0 0 0 3px rgba(114, 0, 14, 0.08);
+}
+
+.form-help {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #777;
+
+  font-size: 10px;
+}
+
+/* =====================================================
+   GENDER
+===================================================== */
+
+.gender-options {
+  display: flex;
+
+  gap: 15px;
+}
+
+.gender-option {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  min-height: 44px;
+
+  padding: 0 15px;
+
+  border: 1px solid #dcdfe3;
+
+  border-radius: 7px;
+
+  cursor: pointer;
+
+  color: #555;
+
+  font-size: 12px;
+}
+
+.gender-option input {
+  accent-color: #72000e;
+}
+
+.gender-option:has(input:checked) {
+  border-color: #72000e;
+
+  background: #fff7f8;
+
+  color: #72000e;
+}
+
+/* =====================================================
+   ASSESSMENT OPTIONS
+===================================================== */
+
+.assessment-options {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 12px;
+}
+
+.assessment-option {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 10px;
+
+  padding: 15px;
+
+  border: 1px solid #e0e3e6;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.assessment-option input {
+  margin-top: 4px;
+
+  accent-color: #72000e;
+}
+
+.assessment-option strong {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #333;
+
+  font-size: 12px;
+}
+
+.assessment-option small {
+  display: block;
+
+  color: #777;
+
+  font-size: 10px;
+
+  line-height: 1.5;
+}
+
+.assessment-option:has(input:checked) {
+  border-color: #72000e;
+
+  background: #fff7f8;
+}
+
+/* =====================================================
+   UNIT KOMPETENSI
+===================================================== */
+
+.unit-kompetensi-info {
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 5px;
+  margin-bottom: 12px;
+
+  padding: 15px;
+
+  background: #f7f8fa;
+
+  border-radius: 8px;
+}
+
+.unit-kompetensi-info > i {
+  color: #72000e;
+
+  font-size: 17px;
+}
+
+.unit-kompetensi-info strong {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #333;
+
+  font-size: 12px;
+}
+
+.unit-kompetensi-info p {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.unit-kompetensi-placeholder {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 20px;
+
+  border: 1px dashed #ccd1d6;
+
+  border-radius: 8px;
+
+  color: #777;
+}
+
+.unit-kompetensi-placeholder i {
+  color: #72000e;
+
+  font-size: 22px;
+}
+
+.unit-kompetensi-placeholder p {
+  margin: 0;
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* =====================================================
+   DOCUMENT
+===================================================== */
+
+.document-group {
+  margin-bottom: 30px;
+}
+
+.document-group:last-child {
+  margin-bottom: 0;
+}
+
+.document-group h3 {
+  margin-bottom: 5px;
+
+  color: #333;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.document-description {
+  margin-bottom: 15px;
+
+  color: #777;
+
+  font-size: 11px;
+}
+
+/* =====================================================
+   DOCUMENT UPLOAD
+===================================================== */
+
+.document-upload {
+  margin-bottom: 10px;
+}
+
+.document-upload label {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 14px;
+
+  border: 1px solid #e0e3e6;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.document-upload label:hover {
+  border-color: #72000e;
+
+  background: #fffafa;
+}
+
+.document-number {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 6px;
+
+  background: #f3f4f6;
+
+  color: #666;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.document-title {
+  flex: 1;
+
+  color: #333;
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.document-title small {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #999;
+
+  font-size: 9px;
+}
+
+.document-upload input[type="file"] {
+  width: 250px;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 10px;
+}
+
+/* =====================================================
+   WARNING
+===================================================== */
+
+.document-warning {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  margin-top: 20px;
+
+  padding: 15px;
+
+  background: #fff8e8;
+
+  border: 1px solid #f1dfb0;
+
+  border-radius: 8px;
+}
+
+.document-warning i {
+  color: #9a6a00;
+
+  font-size: 16px;
+}
+
+.document-warning p {
+  margin: 0;
+
+  color: #715c2c;
+
+  font-size: 10px;
+
+  line-height: 1.7;
+}
+
+/* =====================================================
+   DECLARATION
+===================================================== */
+
+.declaration-card {
+  padding: 20px 25px;
+}
+
+.declaration-check {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 10px;
+}
+
+.declaration-check input {
+  width: 17px;
+  height: 17px;
+
+  margin-top: 2px;
+
+  flex-shrink: 0;
+
+  accent-color: #72000e;
+}
+
+.declaration-check label {
+  color: #555;
+
+  font-size: 11px;
+
+  line-height: 1.7;
+
+  cursor: pointer;
+}
+
+/* =====================================================
+   FINAL ACTION
+===================================================== */
+
+.form-final-actions {
+  max-width: 900px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 0 auto;
+
+  padding-top: 5px;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+  .form-section-card {
+    padding: 22px 18px;
+  }
+
+  .assessment-options {
+    grid-template-columns: 1fr;
+  }
+
+  .document-upload label {
+    flex-wrap: wrap;
+  }
+
+  .document-upload input[type="file"] {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .formulir-header h1 {
+    font-size: 25px;
+  }
+
+  .form-section-title h2 {
+    font-size: 17px;
+  }
+
+  .gender-options {
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+  .gender-option {
+    width: 100%;
+  }
+
+  .form-final-actions {
+    gap: 10px;
+  }
+
+  .form-final-actions .btn-back-registration,
+  .form-final-actions .btn-next-registration {
+    flex: 1;
+  }
+}
+
+/* =====================================================
+   STATUS PENDAFTARAN
+===================================================== */
+
+.status-wrapper {
+  min-height: 100vh;
+  padding: 60px 15px;
+}
+
+.status-card {
+  max-width: 650px;
+  margin: auto;
+  background: #fff;
+  border-radius: 15px;
+  padding: 35px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.status-title {
+  color: #72000e;
+  font-weight: 700;
+}
+
+.status-subtitle {
+  color: #777;
+  font-size: 14px;
+}
+
+.btn-primary-custom {
+  background: #72000e;
+  border-color: #72000e;
+  color: #fff;
+}
+
+.btn-primary-custom:hover {
+  background: #5d000b;
+  border-color: #5d000b;
+  color: #fff;
+}
+
+.result-card {
+  margin-top: 30px;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 25px;
+}
+
+.registration-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: #72000e;
+}
+
+.data-label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 3px;
+}
+
+.data-value {
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 30px;
+  background: #fff3cd;
+  color: #856404;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.progress-wrapper {
+  margin-top: 30px;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding-bottom: 25px;
+}
+
+.step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 32px;
+  width: 2px;
+  height: calc(100% - 25px);
+  background: #ddd;
+}
+
+.step.active:not(:last-child)::after {
+  background: #72000e;
+}
+
+.step-icon {
+  position: relative;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e9ecef;
+  color: #777;
+}
+
+.step.active .step-icon {
+  background: #72000e;
+  color: #fff;
+}
+
+.step-title {
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.step-description {
+  font-size: 12px;
+  color: #888;
+}
+
+.back-link {
+  color: #72000e;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* =====================================================
+   RESPONSIVE STATUS
+===================================================== */
+
+@media (max-width: 768px) {
+  .status-wrapper {
+    padding: 45px 15px;
+  }
+
+  .status-card {
+    padding: 25px 20px;
+  }
+
+  .result-card {
+    padding: 20px;
+  }
+}
+
+/* =====================================================
+   SERTIFIKASI ULANG
+===================================================== */
+
+.sertifikasi-ulang-page {
+  min-height: 70vh;
+
+  display: flex;
+  align-items: center;
+
+  padding: 80px 0;
+
+  background: var(--bg);
+}
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.sertifikasi-ulang-content {
+  max-width: 800px;
+
+  margin: 0 auto;
+  padding: 55px 50px;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border-radius: 15px;
+
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+}
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.sertifikasi-ulang-icon {
+  width: 85px;
+  height: 85px;
+
+  margin: 0 auto 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(114, 0, 14, 0.08);
+
+  color: var(--primary);
+
+  border-radius: 50%;
+
+  font-size: 38px;
+}
+
+/* =====================================================
+   SUBTITLE
+===================================================== */
+
+.sertifikasi-ulang-subtitle {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: var(--primary);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+}
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.sertifikasi-ulang-title {
+  margin-bottom: 18px;
+
+  color: #222222;
+
+  font-size: 32px;
+
+  font-weight: 600;
+}
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.sertifikasi-ulang-description {
+  max-width: 650px;
+
+  margin: 0 auto;
+
+  color: #666666;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+/* =====================================================
+   INFORMATION BOX
+===================================================== */
+
+.sertifikasi-ulang-info {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  margin: 30px 0;
+
+  padding: 22px;
+
+  text-align: left;
+
+  background: #f8f9fa;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 10px;
+}
+
+/* =====================================================
+   INFORMATION ICON
+===================================================== */
+
+.sertifikasi-ulang-info-icon {
+  flex-shrink: 0;
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(114, 0, 14, 0.08);
+
+  color: var(--primary);
+
+  border-radius: 50%;
+
+  font-size: 20px;
+}
+
+/* =====================================================
+   INFORMATION TEXT
+===================================================== */
+
+.sertifikasi-ulang-info-text h5 {
+  margin-bottom: 6px;
+
+  color: #333333;
+
+  font-size: 16px;
+
+  font-weight: 600;
+}
+
+.sertifikasi-ulang-info-text p {
+  margin: 0;
+
+  color: #666666;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+/* =====================================================
+   TAHAPAN
+===================================================== */
+
+.sertifikasi-ulang-tahapan {
+  margin: 30px 0;
+
+  text-align: left;
+}
+
+.sertifikasi-ulang-tahapan > h5 {
+  margin-bottom: 18px;
+
+  color: #333333;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  text-align: center;
+}
+
+/* =====================================================
+   STEPS
+===================================================== */
+
+.sertifikasi-ulang-steps {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 12px;
+}
+
+.sertifikasi-ulang-step {
+  padding: 18px 10px;
+
+  text-align: center;
+
+  background: #f8f9fa;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 10px;
+}
+
+.sertifikasi-ulang-step span {
+  width: 32px;
+  height: 32px;
+
+  margin: 0 auto 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--primary);
+
+  color: #ffffff;
+
+  border-radius: 50%;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.sertifikasi-ulang-step p {
+  margin: 0;
+
+  color: #555555;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.sertifikasi-ulang-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 11px 24px;
+
+  background: var(--primary);
+
+  color: #ffffff;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+.sertifikasi-ulang-button:hover {
+  background: #5a000b;
+
+  color: #ffffff;
+
+  transform: translateY(-2px);
+}
+
+/* =====================================================
+   RESPONSIVE TABLET
+===================================================== */
+
+@media (max-width: 768px) {
+  .sertifikasi-ulang-page {
+    padding: 50px 15px;
+  }
+
+  .sertifikasi-ulang-content {
+    padding: 40px 25px;
+  }
+
+  .sertifikasi-ulang-title {
+    font-size: 27px;
+  }
+
+  .sertifikasi-ulang-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =====================================================
+   RESPONSIVE MOBILE
+===================================================== */
+
+@media (max-width: 576px) {
+  .sertifikasi-ulang-title {
+    font-size: 25px;
+  }
+
+  .sertifikasi-ulang-description {
+    font-size: 14px;
+  }
+
+  .sertifikasi-ulang-info {
+    flex-direction: column;
+
+    text-align: center;
+  }
+
+  .sertifikasi-ulang-steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =====================================================
+   JADWAL ASESMEN
+   ===================================================== */
+
+.jadwal-asesmen-section {
+  padding: 60px 0 80px;
+  background: var(--bg, #f1f3f5);
+}
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.jadwal-asesmen-header {
+  margin-bottom: 38px;
+}
+
+.jadwal-asesmen-subtitle {
+  display: block;
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  color: #72000e;
+}
+
+.jadwal-asesmen-header h1 {
+  margin-bottom: 12px;
+
+  font-size: 42px;
+  font-weight: 600;
+  color: #252a30;
+}
+
+.jadwal-asesmen-header p {
+  max-width: 750px;
+  margin: 0 auto;
+
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* =====================================================
+   INFO JADWAL
+   ===================================================== */
+
+.jadwal-asesmen-info {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  padding: 30px;
+  margin-bottom: 32px;
+
+  background: #ffffff;
+
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+}
+
+.jadwal-asesmen-info-icon {
+  flex: 0 0 52px;
+
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f2e6e8;
+  border-radius: 50%;
+
+  color: #72000e;
+  font-size: 24px;
+}
+
+.jadwal-asesmen-info-content {
+  flex: 1;
+}
+
+.jadwal-asesmen-info h3 {
+  margin: 0 0 10px;
+
+  font-size: 25px;
+  font-weight: 600;
+  color: #20252b;
+}
+
+.jadwal-asesmen-info p {
+  margin: 0 0 8px;
+
+  font-size: 15px;
+  line-height: 1.7;
+  color: #333;
+}
+
+.jadwal-asesmen-info p:last-child {
+  margin-bottom: 0;
+}
+
+/* =====================================================
+   TAHAPAN ASESMEN
+   ===================================================== */
+
+.jadwal-asesmen-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+
+  margin-bottom: 28px;
+}
+
+.jadwal-asesmen-step {
+  padding: 24px 18px;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+
+  transition: all 0.3s ease;
+}
+
+.jadwal-asesmen-step:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.jadwal-asesmen-step-number {
+  width: 36px;
+  height: 36px;
+
+  margin: 0 auto 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #72000e;
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.jadwal-asesmen-step h4 {
+  margin-bottom: 10px;
+
+  font-size: 20px;
+  font-weight: 600;
+  color: #20252b;
+}
+
+.jadwal-asesmen-step p {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* =====================================================
+   CATATAN
+   ===================================================== */
+
+.jadwal-asesmen-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  padding: 18px 20px;
+  margin-bottom: 30px;
+
+  background: #ffffff;
+
+  border-left: 4px solid #72000e;
+  border-radius: 6px;
+
+  color: #333;
+}
+
+.jadwal-asesmen-note > i {
+  flex-shrink: 0;
+
+  margin-top: 2px;
+
+  color: #72000e;
+  font-size: 18px;
+}
+
+.jadwal-asesmen-note-content {
+  flex: 1;
+}
+
+.jadwal-asesmen-note strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 15px;
+  font-weight: 600;
+  color: #20252b;
+}
+
+.jadwal-asesmen-note p {
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* =====================================================
+   BUTTON
+   ===================================================== */
+
+.jadwal-asesmen-action {
+  margin-top: 10px;
+}
+
+.jadwal-asesmen-action .btn {
+  padding: 11px 22px;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 991px) {
+  .jadwal-asesmen-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .jadwal-asesmen-header h1 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .jadwal-asesmen-section {
+    padding: 45px 0 60px;
+  }
+
+  .jadwal-asesmen-info {
+    padding: 24px;
+  }
+
+  .jadwal-asesmen-info h3 {
+    font-size: 22px;
+  }
+
+  .jadwal-asesmen-header h1 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 576px) {
+  .jadwal-asesmen-section {
+    padding: 35px 0 50px;
+  }
+
+  .jadwal-asesmen-header {
+    margin-bottom: 28px;
+  }
+
+  .jadwal-asesmen-header h1 {
+    font-size: 28px;
+  }
+
+  .jadwal-asesmen-header p {
+    font-size: 14px;
+  }
+
+  .jadwal-asesmen-info {
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 22px;
+  }
+
+  .jadwal-asesmen-info-icon {
+    width: 46px;
+    height: 46px;
+    font-size: 21px;
+  }
+
+  .jadwal-asesmen-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .jadwal-asesmen-step {
+    padding: 22px 18px;
+  }
+
+  .jadwal-asesmen-note {
+    padding: 16px;
+  }
+}

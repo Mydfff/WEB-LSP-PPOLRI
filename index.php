@@ -98,6 +98,42 @@ $beritaSamping = array_slice(
     1
 );
 
+
+
+/* =====================================================
+| AMBIL 3 SKEMA SERTIFIKASI AKTIF
+| Digunakan sebagai preview pada halaman beranda
+===================================================== */
+
+$stmtSkema = $pdo->prepare("
+    SELECT
+        id,
+        nama_skema,
+        deskripsi
+    FROM skema
+    WHERE status = 'aktif'
+    ORDER BY id ASC
+    LIMIT 3
+");
+
+$stmtSkema->execute();
+
+$skemaList = $stmtSkema->fetchAll(PDO::FETCH_ASSOC);
+
+
+/* =====================================================
+| ICON UNTUK CARD SKEMA
+===================================================== */
+
+$icons = [
+    "bi-shield-check",
+    "bi-person-badge",
+    "bi-award",
+    "bi-briefcase",
+    "bi-diagram-3",
+    "bi-patch-check"
+];
+
 ?>
 <!doctype html>
 <html lang="id">
@@ -188,7 +224,7 @@ $beritaSamping = array_slice(
                     </div>
 
                     <h1 class="hero-title">
-                        LSP SEKURITI POLRI
+                        LSP SEKURITI PP POLRI
                     </h1>
 
                     <h2 class="hero-subtitle">
@@ -196,7 +232,7 @@ $beritaSamping = array_slice(
                     </h2>
 
                     <p class="hero-description">
-                        Website resmi LSP SEKURITI POLRI sebagai pusat informasi sertifikasi
+                        Website resmi LSP SEKURITI sebagai pusat informasi sertifikasi
                         profesi, jadwal asesmen, skema kompetensi, berita, dan layanan
                         pendaftaran.
                     </p>
@@ -559,13 +595,12 @@ $beritaSamping = array_slice(
 
 
     <!-- =====================================================
-         SKEMA SERTIFIKASI
+        SKEMA SERTIFIKASI
     ====================================================== -->
-
     <section class="certification-section">
-
         <div class="container">
 
+            <!-- SECTION HEADER -->
             <div class="section-title text-center">
 
                 <span class="section-subtitle">
@@ -577,155 +612,158 @@ $beritaSamping = array_slice(
                 </h2>
 
                 <p class="section-description">
-                    LSP PPPOLRI menyediakan berbagai skema sertifikasi kompetensi
-                    yang disusun berdasarkan Standar Kompetensi Kerja Nasional
-                    Indonesia (SKKNI) dan kebutuhan dunia kerja.
+                    LSP PPPOLRI menyediakan berbagai skema sertifikasi
+                    kompetensi yang dapat dipilih sesuai dengan kompetensi
+                    dan kebutuhan sertifikasi Anda.
                 </p>
 
             </div>
 
 
+            <!-- =================================================
+                GRID SKEMA
+            ================================================== -->
             <div class="row g-4 mt-4">
 
+                <?php if (!empty($skemaList)): ?>
 
-                <!-- DIGITAL FORENSIK -->
+                    <?php foreach ($skemaList as $index => $skema): ?>
 
-                <div class="col-lg-4 col-md-6">
+                        <?php
+                        /*
+                        | Menentukan icon berdasarkan urutan card
+                        */
+                        $icon = $icons[$index] ?? "bi-patch-check";
+                        ?>
 
-                    <div class="cert-card">
+                        <div class="col-lg-4 col-md-6">
 
-                        <div class="cert-image">
+                            <div class="cert-card">
 
-                            <img
-                                src="assets/img/Div-Forensik.png"
-                                alt="Digital Forensik">
+                                <!-- ICON -->
+                                <div class="cert-image">
+
+                                    <i class="bi <?php echo e($icon); ?>"></i>
+
+                                </div>
+
+
+                                <!-- CONTENT -->
+                                <div class="cert-body">
+
+                                    <!-- NOMOR -->
+                                    <span class="cert-number">
+                                        SKEMA
+                                        <?php
+                                        echo str_pad(
+                                            $index + 1,
+                                            2,
+                                            "0",
+                                            STR_PAD_LEFT
+                                        );
+                                        ?>
+                                    </span>
+
+
+                                    <!-- NAMA SKEMA -->
+                                    <h4>
+                                        <?php
+                                        echo e(
+                                            $skema['nama_skema']
+                                        );
+                                        ?>
+                                    </h4>
+
+
+                                    <!-- DESKRIPSI -->
+                                    <p>
+
+                                        <?php
+                                        if (!empty($skema['deskripsi'])) {
+
+                                            echo e(
+                                                mb_strimwidth(
+                                                    $skema['deskripsi'],
+                                                    0,
+                                                    130,
+                                                    '...'
+                                                )
+                                            );
+
+                                        } else {
+
+                                            echo "Informasi skema sertifikasi LSP PPPOLRI.";
+
+                                        }
+                                        ?>
+
+                                    </p>
+
+
+                                    <!-- DETAIL -->
+                                    <a
+                                        href="pages/sertifikasi/detail-skema.php?id=<?php echo (int) $skema['id']; ?>"
+                                        class="cert-link"
+                                    >
+                                        Detail Skema
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
-                        <div class="cert-body">
+                    <?php endforeach; ?>
 
-                            <h4>
-                                Digital Forensik
+                <?php else: ?>
+
+                    <!-- =================================================
+                        BELUM ADA SKEMA
+                    ================================================== -->
+                    <div class="col-12">
+
+                        <div class="text-center py-5">
+
+                            <i
+                                class="bi bi-info-circle fs-1 text-muted"
+                            ></i>
+
+                            <h4 class="mt-3">
+                                Belum Ada Skema Sertifikasi
                             </h4>
 
-                            <p>
-                                Sertifikasi kompetensi dalam bidang investigasi serta
-                                analisis barang bukti digital secara profesional.
+                            <p class="text-muted">
+                                Data skema sertifikasi belum tersedia.
                             </p>
-
-                            <a href="#" class="cert-link">
-
-                                Detail Skema
-
-                                <i class="bi bi-arrow-right"></i>
-
-                            </a>
 
                         </div>
 
                     </div>
 
-                </div>
-
-
-                <!-- CYBER SECURITY -->
-
-                <div class="col-lg-4 col-md-6">
-
-                    <div class="cert-card">
-
-                        <div class="cert-image">
-
-                            <img
-                                src="assets/img/Div-CS.png"
-                                alt="Cyber Security">
-
-                        </div>
-
-                        <div class="cert-body">
-
-                            <h4>
-                                Cyber Security
-                            </h4>
-
-                            <p>
-                                Sertifikasi kompetensi dalam bidang keamanan sistem
-                                informasi, jaringan, dan perlindungan data.
-                            </p>
-
-                            <a href="#" class="cert-link">
-
-                                Detail Skema
-
-                                <i class="bi bi-arrow-right"></i>
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- INTELIJEN -->
-
-                <div class="col-lg-4 col-md-6 mx-md-auto">
-
-                    <div class="cert-card">
-
-                        <div class="cert-image">
-
-                            <img
-                                src="assets/img/div-intel.png"
-                                alt="Intelijen">
-
-                        </div>
-
-                        <div class="cert-body">
-
-                            <h4>
-                                Intelijen
-                            </h4>
-
-                            <p>
-                                Sertifikasi kompetensi pada bidang analisis,
-                                pengelolaan informasi, dan intelijen strategis.
-                            </p>
-
-                            <a href="#" class="cert-link">
-
-                                Detail Skema
-
-                                <i class="bi bi-arrow-right"></i>
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
+                <?php endif; ?>
 
             </div>
 
 
+            <!-- =================================================
+                LIHAT SEMUA SKEMA
+            ================================================== -->
             <div class="text-center mt-5">
 
-                <a href="skema.php" class="btn-skema">
-
+                <a
+                    href="pages/sertifikasi/skema.php"
+                    class="btn-skema"
+                >
                     Lihat Semua Skema
-
                     <i class="bi bi-arrow-right-circle-fill"></i>
-
                 </a>
 
             </div>
 
         </div>
-
     </section>
-
 
 
     <!-- =====================================================

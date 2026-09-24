@@ -1,28 +1,69 @@
-
 <?php
 // ==========================================================
 // HALAMAN DAFTAR SKEMA SERTIFIKASI
 // LSP PPPOLRI
 // ==========================================================
+
+// Koneksi database
+require_once "../../config/database.php";
+
+// ==========================================================
+// AMBIL DATA SKEMA DARI DATABASE
+// HANYA MENAMPILKAN SKEMA YANG AKTIF
+// ==========================================================
+$stmt = $pdo->prepare("
+    SELECT *
+    FROM skema
+    WHERE status = 'aktif'
+    ORDER BY id ASC
+");
+
+$stmt->execute();
+
+$skemaList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+// ==========================================================
+// ICON UNTUK SETIAP CARD
+// ==========================================================
+$icons = [
+    "bi-shield-check",
+    "bi-person-badge",
+    "bi-award",
+    "bi-briefcase",
+    "bi-diagram-3",
+    "bi-patch-check"
+];
+
 ?>
 
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Daftar Skema Sertifikasi - LSP PPPOLRI</title>
 
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
 
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
     <!-- CSS Global -->
     <link rel="stylesheet" href="../../assets/css/header.css">
@@ -33,6 +74,7 @@
 
     <!-- Responsive -->
     <link rel="stylesheet" href="../../assets/css/responsive.css">
+
 </head>
 
 <body>
@@ -66,7 +108,7 @@
                     </span>
 
                     <h1>
-                        Daftar Skema Sertifikasi
+                        DAFTAR SKEMA SERTIFIKASI OKUPASI
                     </h1>
 
                     <p>
@@ -80,199 +122,109 @@
                 <!-- ==================================================
                      GRID SKEMA
                      ================================================== -->
+
                 <div class="row skema-grid g-4">
 
+                    <?php if (count($skemaList) > 0): ?>
 
-                    <!-- CARD 01 -->
-                    <div class="col-lg-4 col-md-6">
+                        <?php foreach ($skemaList as $index => $skema): ?>
 
-                        <div class="skema-card">
+                            <?php
+                            // Menentukan icon berdasarkan urutan card
+                            $icon = $icons[$index] ?? "bi-patch-check";
+                            ?>
 
-                            <span class="skema-number">
-                                SKEMA 01
-                            </span>
+                            <div class="col-lg-4 col-md-6">
 
-                            <div class="skema-icon">
-                                <i class="bi bi-shield-check"></i>
+                                <div class="skema-card">
+
+                                    <!-- Nomor Skema -->
+                                    <span class="skema-number">
+                                        SKEMA <?php echo str_pad($index + 1, 2, "0", STR_PAD_LEFT); ?>
+                                    </span>
+
+
+                                    <!-- Icon -->
+                                    <div class="skema-icon">
+
+                                        <i class="bi <?php echo htmlspecialchars($icon); ?>"></i>
+
+                                    </div>
+
+
+                                    <!-- Nama Skema -->
+                                    <h3>
+
+                                        <?php
+                                        echo htmlspecialchars($skema["nama_skema"]);
+                                        ?>
+
+                                    </h3>
+
+
+                                    <!-- Deskripsi -->
+                                    <p>
+
+                                        <?php
+
+                                        if (!empty($skema["deskripsi"])) {
+
+                                            echo htmlspecialchars($skema["deskripsi"]);
+
+                                        } else {
+
+                                            echo "Informasi skema sertifikasi LSP PPPOLRI.";
+
+                                        }
+
+                                        ?>
+
+                                    </p>
+
+
+                                    <!-- Detail -->
+                                    <a
+                                        href="detail-skema.php?id=<?php echo $skema["id"]; ?>"
+                                        class="skema-btn"
+                                    >
+
+                                        Lihat Detail
+
+                                        <i class="bi bi-arrow-right"></i>
+
+                                    </a>
+
+                                </div>
+
                             </div>
 
-                            <h3>
-                                Manajemen Keamanan
-                            </h3>
+                        <?php endforeach; ?>
 
-                            <p>
-                                Skema sertifikasi untuk kompetensi
-                                di bidang manajemen keamanan.
-                            </p>
+                    <?php else: ?>
 
-                            <a href="detail-skema.php?id=1" class="skema-btn">
-                                Lihat Detail
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
+                        <!-- Jika belum ada data -->
+
+                        <div class="col-12">
+
+                            <div class="text-center py-5">
+
+                                <i
+                                    class="bi bi-info-circle fs-1 text-muted"
+                                ></i>
+
+                                <h4 class="mt-3">
+                                    Belum Ada Skema Sertifikasi
+                                </h4>
+
+                                <p class="text-muted">
+                                    Data skema sertifikasi belum tersedia.
+                                </p>
+
+                            </div>
 
                         </div>
 
-                    </div>
-
-
-                    <!-- CARD 02 -->
-                    <div class="col-lg-4 col-md-6">
-
-                        <div class="skema-card">
-
-                            <span class="skema-number">
-                                SKEMA 02
-                            </span>
-
-                            <div class="skema-icon">
-                                <i class="bi bi-person-badge"></i>
-                            </div>
-
-                            <h3>
-                                Kompetensi Kepolisian
-                            </h3>
-
-                            <p>
-                                Skema sertifikasi untuk meningkatkan
-                                kompetensi profesional kepolisian.
-                            </p>
-
-                            <a href="detail-skema.php?id=2" class="skema-btn">
-                                Lihat Detail
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- CARD 03 -->
-                    <div class="col-lg-4 col-md-6">
-
-                        <div class="skema-card">
-
-                            <span class="skema-number">
-                                SKEMA 03
-                            </span>
-
-                            <div class="skema-icon">
-                                <i class="bi bi-award"></i>
-                            </div>
-
-                            <h3>
-                                Asesor Kompetensi
-                            </h3>
-
-                            <p>
-                                Skema sertifikasi bagi tenaga profesional
-                                dalam bidang asesmen kompetensi.
-                            </p>
-
-                            <a href="detail-skema.php?id=3" class="skema-btn">
-                                Lihat Detail
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- CARD 04 -->
-                    <div class="col-lg-4 col-md-6">
-
-                        <div class="skema-card">
-
-                            <span class="skema-number">
-                                SKEMA 04
-                            </span>
-
-                            <div class="skema-icon">
-                                <i class="bi bi-briefcase"></i>
-                            </div>
-
-                            <h3>
-                                Profesional
-                            </h3>
-
-                            <p>
-                                Skema sertifikasi untuk mendukung pengakuan
-                                kompetensi tenaga profesional.
-                            </p>
-
-                            <a href="detail-skema.php?id=4" class="skema-btn">
-                                Lihat Detail
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- CARD 05 -->
-                    <div class="col-lg-4 col-md-6">
-
-                        <div class="skema-card">
-
-                            <span class="skema-number">
-                                SKEMA 05
-                            </span>
-
-                            <div class="skema-icon">
-                                <i class="bi bi-diagram-3"></i>
-                            </div>
-
-                            <h3>
-                                Manajemen Organisasi
-                            </h3>
-
-                            <p>
-                                Skema sertifikasi yang berkaitan dengan
-                                kompetensi pengelolaan organisasi.
-                            </p>
-
-                            <a href="detail-skema.php?id=5" class="skema-btn">
-                                Lihat Detail
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- CARD 06 -->
-                    <div class="col-lg-4 col-md-6">
-
-                        <div class="skema-card">
-
-                            <span class="skema-number">
-                                SKEMA 06
-                            </span>
-
-                            <div class="skema-icon">
-                                <i class="bi bi-patch-check"></i>
-                            </div>
-
-                            <h3>
-                                Kompetensi Lainnya
-                            </h3>
-
-                            <p>
-                                Skema sertifikasi lainnya yang tersedia
-                                pada LSP PPPOLRI.
-                            </p>
-
-                            <a href="detail-skema.php?id=6" class="skema-btn">
-                                Lihat Detail
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-
-                        </div>
-
-                    </div>
+                    <?php endif; ?>
 
                 </div>
 
@@ -293,7 +245,9 @@
          JAVASCRIPT
          ================================================== -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    ></script>
 
     <script src="../../assets/js/include.js"></script>
     <script src="../../assets/js/navbar.js"></script>
