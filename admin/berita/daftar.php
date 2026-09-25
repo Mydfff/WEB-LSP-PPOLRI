@@ -1,4 +1,5 @@
 <?php
+
 // ==========================================================
 // DAFTAR BERITA - LSP PPPOLRI
 // File: admin/berita/daftar.php
@@ -11,10 +12,8 @@ session_start();
 // ==========================================================
 
 if (!isset($_SESSION["admin_id"])) {
-
-    header("Location: ../../auth/login.php");
+    header("Location: ../auth/login.php");
     exit;
-
 }
 
 // ==========================================================
@@ -31,6 +30,13 @@ $adminNama = $_SESSION["admin_nama"] ?? "Administrator";
 $adminRole = $_SESSION["admin_role"] ?? "Administrator";
 
 // ==========================================================
+// PAGE INFORMATION
+// ==========================================================
+
+$pageTitle = "Berita";
+$pageSubtitle = "Kelola berita dan informasi LSP PPPOLRI";
+
+// ==========================================================
 // HELPER HTML
 // ==========================================================
 
@@ -44,10 +50,11 @@ function e($value)
 }
 
 // ==========================================================
-// AMBIL DATA BERITA DARI DATABASE
+// AMBIL DATA BERITA
 // ==========================================================
 
 $beritaList = [];
+$databaseError = "";
 
 try {
 
@@ -64,14 +71,11 @@ try {
         ORDER BY created_at DESC
     ");
 
-    $beritaList = $stmt->fetchAll();
+    $beritaList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
 
-    $beritaList = [];
-
-    $databaseError =
-        "Data berita gagal diambil dari database.";
+    $databaseError = "Data berita gagal diambil dari database.";
 
 }
 
@@ -80,13 +84,18 @@ try {
 // ==========================================================
 
 $successMessage = $_SESSION["success"] ?? "";
-
 unset($_SESSION["success"]);
+
+// ==========================================================
+// PESAN ERROR
+// ==========================================================
+
+$errorMessage = $_SESSION["error"] ?? "";
+unset($_SESSION["error"]);
 
 ?>
 
 <!DOCTYPE html>
-
 <html lang="id">
 
 <head>
@@ -102,7 +111,6 @@ unset($_SESSION["success"]);
         Daftar Berita | LSP PPPOLRI
     </title>
 
-
     <!-- =====================================================
          BOOTSTRAP
     ====================================================== -->
@@ -112,7 +120,6 @@ unset($_SESSION["success"]);
         rel="stylesheet"
     >
 
-
     <!-- =====================================================
          BOOTSTRAP ICONS
     ====================================================== -->
@@ -121,7 +128,6 @@ unset($_SESSION["success"]);
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
         rel="stylesheet"
     >
-
 
     <!-- =====================================================
          GOOGLE FONT
@@ -143,7 +149,6 @@ unset($_SESSION["success"]);
         rel="stylesheet"
     >
 
-
     <!-- =====================================================
          ADMIN CSS
     ====================================================== -->
@@ -155,240 +160,15 @@ unset($_SESSION["success"]);
 
 </head>
 
-
 <body>
-
-
-<!-- =========================================================
-     ADMIN WRAPPER
-========================================================== -->
 
 <div class="admin-wrapper">
 
-
     <!-- =====================================================
-         SIDEBAR
+         SIDEBAR COMPONENT
     ====================================================== -->
 
-    <aside
-        class="admin-sidebar"
-        id="adminSidebar"
-    >
-
-
-        <!-- SIDEBAR BRAND -->
-
-        <div class="sidebar-brand">
-
-            <div class="brand-logo">
-
-                <i class="bi bi-shield-check"></i>
-
-            </div>
-
-
-            <div class="brand-text">
-
-                <strong>
-                    LSP PPPOLRI
-                </strong>
-
-                <span>
-                    Admin Panel
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- SIDEBAR NAVIGATION -->
-
-        <nav class="sidebar-nav">
-
-
-            <!-- MENU UTAMA -->
-
-            <div class="nav-section">
-
-                <span class="nav-section-title">
-                    MENU UTAMA
-                </span>
-
-
-                <!-- DASHBOARD -->
-
-                <a
-                    href="../dashboard.php"
-                    class="sidebar-link"
-                >
-
-                    <i class="bi bi-grid-fill"></i>
-
-                    <span>
-                        Dashboard
-                    </span>
-
-                </a>
-
-
-                <!-- BERITA -->
-
-                <a
-                    href="daftar.php"
-                    class="sidebar-link active"
-                >
-
-                    <i class="bi bi-newspaper"></i>
-
-                    <span>
-                        Berita
-                    </span>
-
-                </a>
-
-
-                <!-- GALERI -->
-
-                <a
-                    href="../galeri.php"
-                    class="sidebar-link"
-                >
-
-                    <i class="bi bi-images"></i>
-
-                    <span>
-                        Galeri
-                    </span>
-
-                </a>
-
-
-                <!-- SKEMA -->
-
-                <a
-                    href="../skema.php"
-                    class="sidebar-link"
-                >
-
-                    <i class="bi bi-award"></i>
-
-                    <span>
-                        Skema Sertifikasi
-                    </span>
-
-                </a>
-
-
-                <!-- FAQ -->
-
-                <a
-                    href="../faq.php"
-                    class="sidebar-link"
-                >
-
-                    <i class="bi bi-question-circle"></i>
-
-                    <span>
-                        FAQ
-                    </span>
-
-                </a>
-
-
-                <!-- PESERTA -->
-
-                <a
-                    href="../peserta.php"
-                    class="sidebar-link"
-                >
-
-                    <i class="bi bi-people"></i>
-
-                    <span>
-                        Data Peserta
-                    </span>
-
-                </a>
-
-            </div>
-
-
-            <!-- MANAGEMENT -->
-
-            <div class="nav-section">
-
-                <span class="nav-section-title">
-                    MANAGEMENT
-                </span>
-
-
-                <!-- KELOLA ADMIN -->
-
-                <a
-                    href="../admin.php"
-                    class="sidebar-link"
-                >
-
-                    <i class="bi bi-person-gear"></i>
-
-                    <span>
-                        Kelola Admin
-                    </span>
-
-                </a>
-
-
-                <!-- PENGATURAN -->
-
-                <a
-                    href="#"
-                    class="sidebar-link"
-                >
-
-                    <i class="bi bi-gear"></i>
-
-                    <span>
-                        Pengaturan
-                    </span>
-
-                </a>
-
-            </div>
-
-        </nav>
-
-
-        <!-- SIDEBAR FOOTER -->
-
-        <div class="sidebar-footer">
-
-            <a
-                href="../../auth/logout.php"
-                class="sidebar-link"
-            >
-
-                <i class="bi bi-box-arrow-right"></i>
-
-                <span>
-                    Logout
-                </span>
-
-            </a>
-
-        </div>
-
-    </aside>
-
-
-    <!-- =====================================================
-         OVERLAY MOBILE
-    ====================================================== -->
-
-    <div
-        class="sidebar-overlay"
-        id="sidebarOverlay"
-    ></div>
+    <?php require_once "../components/sidebar.php"; ?>
 
 
     <!-- =====================================================
@@ -397,161 +177,73 @@ unset($_SESSION["success"]);
 
     <div class="admin-main">
 
-
         <!-- =================================================
-             TOPBAR
+             HEADER COMPONENT
         ================================================== -->
 
-        <header class="admin-topbar">
-
-
-            <!-- HAMBURGER -->
-
-            <button
-                type="button"
-                class="sidebar-toggle"
-                id="sidebarToggle"
-                aria-label="Buka menu"
-                aria-expanded="false"
-            >
-
-                <i class="bi bi-list"></i>
-
-            </button>
-
-
-            <!-- TITLE -->
-
-            <div class="topbar-title">
-
-                <h2>
-                    Berita
-                </h2>
-
-                <span>
-                    Kelola berita dan informasi LSP PPPOLRI
-                </span>
-
-            </div>
-
-
-            <!-- TOPBAR RIGHT -->
-
-            <div class="topbar-actions">
-
-
-                <!-- NOTIFICATION -->
-
-                <button
-                    type="button"
-                    class="notification-btn"
-                    aria-label="Notifikasi"
-                >
-
-                    <i class="bi bi-bell"></i>
-
-                    <span class="notification-badge">
-                        3
-                    </span>
-
-                </button>
-
-
-                <!-- PROFILE -->
-
-                <a
-                    href="../profile.php"
-                    class="admin-profile"
-                    title="Profil Admin"
-                >
-
-                    <div class="admin-avatar">
-
-                        <i class="bi bi-person-fill"></i>
-
-                    </div>
-
-
-                    <div class="admin-profile-info">
-
-                        <strong>
-                            <?php echo e($adminNama); ?>
-                        </strong>
-
-                        <span>
-                            <?php echo e($adminRole); ?>
-                        </span>
-
-                    </div>
-
-
-                    <i class="bi bi-chevron-down profile-arrow"></i>
-
-                </a>
-
-            </div>
-
-        </header>
+        <?php require_once "../components/header.php"; ?>
 
 
         <!-- =================================================
-             CONTENT
+             CONTENT BERITA
         ================================================== -->
 
         <main class="dashboard-content">
 
-            <?php if (isset($_SESSION["success"])): ?>
+            <!-- =================================================
+                 PESAN SUCCESS
+            ================================================== -->
 
-    <div
-        class="alert alert-success alert-dismissible fade show"
-        role="alert"
-    >
+            <?php if ($successMessage !== ""): ?>
 
-        <i class="bi bi-check-circle me-2"></i>
+                <div
+                    class="alert alert-success alert-dismissible fade show"
+                    role="alert"
+                >
 
-        <?php
-        echo e($_SESSION["success"]);
-        ?>
+                    <i class="bi bi-check-circle me-2"></i>
 
-        <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-        ></button>
+                    <?php echo e($successMessage); ?>
 
-    </div>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Close"
+                    ></button>
 
-    <?php unset($_SESSION["success"]); ?>
+                </div>
 
-<?php endif; ?>
+            <?php endif; ?>
 
 
-<?php if (isset($_SESSION["error"])): ?>
+            <!-- =================================================
+                 PESAN ERROR
+            ================================================== -->
 
-    <div
-        class="alert alert-danger alert-dismissible fade show"
-        role="alert"
-    >
+            <?php if ($errorMessage !== ""): ?>
 
-        <i class="bi bi-exclamation-circle me-2"></i>
+                <div
+                    class="alert alert-danger alert-dismissible fade show"
+                    role="alert"
+                >
 
-        <?php
-        echo e($_SESSION["error"]);
-        ?>
+                    <i class="bi bi-exclamation-circle me-2"></i>
 
-        <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-        ></button>
+                    <?php echo e($errorMessage); ?>
 
-    </div>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Close"
+                    ></button>
 
-    <?php unset($_SESSION["error"]); ?>
+                </div>
 
-<?php endif; ?>
+            <?php endif; ?>
+
+
             <!-- =================================================
                  HEADER HALAMAN
             ================================================== -->
@@ -575,38 +267,10 @@ unset($_SESSION["success"]);
 
 
             <!-- =================================================
-                 PESAN BERHASIL
-            ================================================== -->
-
-            <?php if ($successMessage !== ""): ?>
-
-                <div
-                    class="alert alert-success alert-dismissible fade show"
-                    role="alert"
-                >
-
-                    <i class="bi bi-check-circle me-2"></i>
-
-                    <?php echo e($successMessage); ?>
-
-
-                    <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="alert"
-                        aria-label="Close"
-                    ></button>
-
-                </div>
-
-            <?php endif; ?>
-
-
-            <!-- =================================================
                  ERROR DATABASE
             ================================================== -->
 
-            <?php if (isset($databaseError)): ?>
+            <?php if ($databaseError !== ""): ?>
 
                 <div
                     class="alert alert-danger"
@@ -627,7 +291,6 @@ unset($_SESSION["success"]);
             ================================================== -->
 
             <section class="dashboard-card">
-
 
                 <div
                     class="d-flex justify-content-between align-items-center flex-wrap gap-3"
@@ -677,7 +340,6 @@ unset($_SESSION["success"]);
                                 <i class="bi bi-search"></i>
 
                             </span>
-
 
                             <input
                                 type="text"
@@ -746,26 +408,17 @@ unset($_SESSION["success"]);
 
                         <tbody>
 
-
                             <?php if (!empty($beritaList)): ?>
 
-
-                                <?php foreach (
-                                    $beritaList
-                                    as $index => $berita
-                                ): ?>
-
+                                <?php foreach ($beritaList as $index => $berita): ?>
 
                                     <tr>
-
 
                                         <!-- NO -->
 
                                         <td>
 
-                                            <?php
-                                            echo $index + 1;
-                                            ?>
+                                            <?php echo $index + 1; ?>
 
                                         </td>
 
@@ -774,23 +427,19 @@ unset($_SESSION["success"]);
 
                                         <td>
 
-                                            <?php if (
-                                                !empty(
-                                                    $berita["gambar"]
-                                                )
-                                            ): ?>
+                                            <?php if (!empty($berita["gambar"])): ?>
 
                                                 <img
                                                     src="<?php
-                                                    echo e(
-                                                        "../../uploads/berita/" .
-                                                        $berita["gambar"]
-                                                    );
+                                                        echo e(
+                                                            "../../uploads/berita/" .
+                                                            $berita["gambar"]
+                                                        );
                                                     ?>"
                                                     alt="<?php
-                                                    echo e(
-                                                        $berita["judul"]
-                                                    );
+                                                        echo e(
+                                                            $berita["judul"]
+                                                        );
                                                     ?>"
                                                     style="
                                                         width:70px;
@@ -872,14 +521,12 @@ unset($_SESSION["success"]);
                                                 ></i>
 
                                                 <?php
-
                                                 echo date(
                                                     "d M Y",
                                                     strtotime(
                                                         $berita["created_at"]
                                                     )
                                                 );
-
                                                 ?>
 
                                             </span>
@@ -892,16 +539,13 @@ unset($_SESSION["success"]);
                                         <td>
 
                                             <?php if (
-                                                $berita["status"]
-                                                === "publish"
+                                                $berita["status"] === "publish"
                                             ): ?>
 
                                                 <span
                                                     class="badge text-bg-success"
                                                 >
-
                                                     Published
-
                                                 </span>
 
                                             <?php else: ?>
@@ -909,9 +553,7 @@ unset($_SESSION["success"]);
                                                 <span
                                                     class="badge text-bg-secondary"
                                                 >
-
                                                     Draft
-
                                                 </span>
 
                                             <?php endif; ?>
@@ -927,13 +569,11 @@ unset($_SESSION["success"]);
                                                 class="d-flex justify-content-center gap-2"
                                             >
 
-
                                                 <!-- EDIT -->
 
                                                 <a
                                                     href="edit.php?id=<?php
-                                                    echo (int)
-                                                        $berita["id"];
+                                                        echo (int) $berita["id"];
                                                     ?>"
                                                     class="btn btn-sm btn-outline-primary"
                                                     title="Edit Berita"
@@ -950,8 +590,7 @@ unset($_SESSION["success"]);
 
                                                 <a
                                                     href="hapus.php?id=<?php
-                                                    echo (int)
-                                                        $berita["id"];
+                                                        echo (int) $berita["id"];
                                                     ?>"
                                                     class="btn btn-sm btn-outline-danger"
                                                     title="Hapus Berita"
@@ -970,14 +609,13 @@ unset($_SESSION["success"]);
 
                                     </tr>
 
-
                                 <?php endforeach; ?>
-
 
                             <?php else: ?>
 
-
-                                <!-- BELUM ADA DATA -->
+                                <!-- =================================================
+                                     DATA KOSONG
+                                ================================================== -->
 
                                 <tr>
 
@@ -990,19 +628,14 @@ unset($_SESSION["success"]);
                                             class="bi bi-newspaper fs-1 d-block mb-3 text-muted"
                                         ></i>
 
-
                                         <strong>
                                             Belum ada berita
                                         </strong>
 
-
                                         <p class="mb-3 text-muted">
-
                                             Silakan tambahkan
                                             berita baru.
-
                                         </p>
-
 
                                         <a
                                             href="tambah.php"
@@ -1021,9 +654,7 @@ unset($_SESSION["success"]);
 
                                 </tr>
 
-
                             <?php endif; ?>
-
 
                         </tbody>
 
@@ -1031,31 +662,16 @@ unset($_SESSION["success"]);
 
                 </div>
 
-
             </section>
-
 
         </main>
 
 
-        <!-- =================================================
-             FOOTER
-        ================================================== -->
+        <!-- =====================================================
+             FOOTER COMPONENT
+        ====================================================== -->
 
-        <footer class="admin-footer">
-
-            <p>
-
-                &copy;
-                <?php echo date("Y"); ?>
-
-                LSP PPPOLRI.
-                Admin Dashboard.
-
-            </p>
-
-        </footer>
-
+        <?php require_once "../components/footer.php"; ?>
 
     </div>
 
@@ -1089,7 +705,6 @@ unset($_SESSION["success"]);
 const searchBerita =
     document.getElementById("searchBerita");
 
-
 if (searchBerita) {
 
     searchBerita.addEventListener(
@@ -1099,18 +714,15 @@ if (searchBerita) {
             const keyword =
                 this.value.toLowerCase().trim();
 
-
             const rows =
                 document.querySelectorAll(
                     "#tableBerita tbody tr"
                 );
 
-
             rows.forEach(function (row) {
 
                 const text =
                     row.innerText.toLowerCase();
-
 
                 if (text.includes(keyword)) {
 
@@ -1131,7 +743,5 @@ if (searchBerita) {
 
 </script>
 
-
 </body>
-
 </html>

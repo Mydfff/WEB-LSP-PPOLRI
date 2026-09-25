@@ -1503,3 +1503,93 @@ img {
 .sidebar-link {
   white-space: normal;
 }
+
+/* ==========================================================
+   DASHBOARD - UKURAN TEKS
+========================================================== */
+
+/* Judul utama dashboard */
+.dashboard-welcome h1 {
+  font-size: 32px;
+}
+
+/* Deskripsi welcome */
+.dashboard-welcome p {
+  font-size: 15px;
+}
+
+/* ==========================================================
+   STAT CARD
+========================================================== */
+
+.stat-label {
+  font-size: 14px;
+}
+
+.stat-number {
+  font-size: 32px;
+}
+
+.stat-description {
+  font-size: 13px;
+}
+
+/* ==========================================================
+   CARD DASHBOARD
+========================================================== */
+
+.dashboard-card-header h3 {
+  font-size: 20px;
+}
+
+.card-label {
+  font-size: 12px;
+}
+
+.card-action {
+  font-size: 13px;
+}
+
+/* ==========================================================
+   BERITA TERBARU
+========================================================== */
+
+.news-admin-info h4 {
+  font-size: 15px;
+}
+
+.news-admin-info span {
+  font-size: 13px;
+}
+
+.status-badge {
+  font-size: 12px;
+}
+
+/* ==========================================================
+   AKTIVITAS TERBARU
+========================================================== */
+
+.activity-content strong {
+  font-size: 14px;
+}
+
+.activity-content span {
+  font-size: 13px;
+}
+
+.activity-content small {
+  font-size: 12px;
+}
+
+/* ==========================================================
+   QUICK ACCESS
+========================================================== */
+
+.quick-access-item strong {
+  font-size: 14px;
+}
+
+.quick-access-item span {
+  font-size: 13px;
+}

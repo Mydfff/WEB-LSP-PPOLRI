@@ -5,10 +5,45 @@
 // File: admin/components/sidebar.php
 // ==========================================================
 
+
+// ==========================================================
+// DETEKSI HALAMAN AKTIF
+// ==========================================================
+
+$currentPage = basename($_SERVER["PHP_SELF"]);
+$currentPath = $_SERVER["REQUEST_URI"];
+
+
+/*
+ * Fungsi untuk menentukan menu aktif.
+ */
+function isActiveMenu($url)
+{
+    global $currentPath;
+
+    $path = parse_url($url, PHP_URL_PATH);
+
+    return ($currentPath === $path) ? "active" : "";
+}
+
+
+/*
+ * Untuk menu yang mempunyai beberapa halaman
+ * seperti Kelola Admin (admin.php, admin-edit.php,
+ * admin-tambah.php, admin-hapus.php).
+ */
+function isActiveGroup($folder)
+{
+    global $currentPath;
+
+    return (strpos($currentPath, $folder) !== false)
+        ? "active"
+        : "";
+}
+
 ?>
 
 <aside class="admin-sidebar" id="adminSidebar">
-
 
     <!-- =====================================================
          SIDEBAR BRAND
@@ -17,13 +52,10 @@
     <div class="sidebar-brand">
 
         <div class="brand-logo">
-
             <i class="bi bi-shield-check"></i>
-
         </div>
 
         <div class="brand-text">
-
             <strong>
                 LSP PPPOLRI
             </strong>
@@ -31,7 +63,6 @@
             <span>
                 Admin Panel
             </span>
-
         </div>
 
     </div>
@@ -58,80 +89,70 @@
             <!-- Dashboard -->
 
             <a
-                href="admin/dashboard.php"
-                class="sidebar-link"
+                href="/Web-LSP-PPOLRI/admin/dashboard.php"
+                class="sidebar-link <?= isActiveMenu('/Web-LSP-PPOLRI/admin/dashboard.php'); ?>"
             >
-
                 <i class="bi bi-grid-fill"></i>
 
                 <span>
                     Dashboard
                 </span>
-
             </a>
 
 
             <!-- Berita -->
 
             <a
-                href="/Web-LSP-PPPOLRI/admin/berita/daftar.php"
-                class="sidebar-link"
+                href="/Web-LSP-PPOLRI/admin/berita/daftar.php"
+                class="sidebar-link <?= isActiveMenu('/Web-LSP-PPOLRI/admin/berita/daftar.php'); ?>"
             >
-
                 <i class="bi bi-newspaper"></i>
 
                 <span>
                     Berita
                 </span>
-
             </a>
 
 
             <!-- Galeri -->
 
             <a
-                href="/Web-LSP-PPPOLRI/admin/galeri/"
-                class="sidebar-link"
+                href="/Web-LSP-PPOLRI/admin/galeri/daftar.php"
+                class="sidebar-link <?= isActiveMenu('/Web-LSP-PPOLRI/admin/galeri/daftar.php'); ?>"
             >
-
                 <i class="bi bi-images"></i>
 
                 <span>
                     Galeri
                 </span>
-
             </a>
 
 
             <!-- Skema Sertifikasi -->
 
             <a
-                href="/Web-LSP-PPPOLRI/admin/skema/daftar.php"
-                class="sidebar-link"
+                href="/Web-LSP-PPOLRI/admin/skema/daftar.php"
+                class="sidebar-link <?= isActiveMenu('/Web-LSP-PPOLRI/admin/skema/daftar.php'); ?>"
             >
-
                 <i class="bi bi-award"></i>
 
                 <span>
                     Skema Sertifikasi
                 </span>
-
             </a>
 
 
             <!-- Data Peserta -->
 
             <a
-                href="/Web-LSP-PPPOLRI/admin/peserta/"
-                class="sidebar-link"
+                href="/Web-LSP-PPOLRI/admin/peserta/daftar.php"
+                class="sidebar-link <?= isActiveMenu('/Web-LSP-PPOLRI/admin/peserta/daftar.php'); ?>"
             >
-
                 <i class="bi bi-people"></i>
 
                 <span>
                     Data Peserta
                 </span>
-
             </a>
 
         </div>
@@ -151,48 +172,42 @@
             <!-- Pendaftaran Sertifikasi -->
 
             <a
-                href="/Web-LSP-PPPOLRI/admin/sertifikasi/pendaftaran/daftar.php"
-                class="sidebar-link"
+                href="/Web-LSP-PPOLRI/admin/sertifikasi/pendaftaran/daftar.php"
+                class="sidebar-link <?= isActiveMenu('/Web-LSP-PPOLRI/admin/sertifikasi/pendaftaran/daftar.php'); ?>"
             >
-
                 <i class="bi bi-file-earmark-person"></i>
 
                 <span>
                     Pendaftaran Sertifikasi
                 </span>
-
             </a>
 
 
             <!-- Sertifikasi Ulang -->
 
             <a
-                href="/Web-LSP-PPPOLRI/admin/sertifikasi/ulang/"
-                class="sidebar-link"
+                href="/Web-LSP-PPOLRI/admin/sertifikasi/sertifikasi-ulang/daftar.php"
+                class="sidebar-link <?= isActiveMenu('/Web-LSP-PPOLRI/admin/sertifikasi/sertifikasi-ulang/daftar.php'); ?>"
             >
-
                 <i class="bi bi-arrow-repeat"></i>
 
                 <span>
                     Sertifikasi Ulang
                 </span>
-
             </a>
 
 
             <!-- Perpanjangan Sertifikasi -->
 
             <a
-                href="/Web-LSP-PPPOLRI/admin/sertifikasi/perpanjangan/"
-                class="sidebar-link"
+                href="/Web-LSP-PPOLRI/admin/sertifikasi/perpanjangan/daftar.php"
+                class="sidebar-link <?= isActiveMenu('/Web-LSP-PPOLRI/admin/sertifikasi/perpanjangan/daftar.php'); ?>"
             >
-
                 <i class="bi bi-arrow-clockwise"></i>
 
                 <span>
                     Perpanjangan Sertifikasi
                 </span>
-
             </a>
 
         </div>
@@ -212,32 +227,28 @@
             <!-- Kelola Admin -->
 
             <a
-                href="/Web-LSP-PPPOLRI/admin/admin.php"
-                class="sidebar-link"
+                href="/Web-LSP-PPOLRI/admin/admin/admin.php"
+                class="sidebar-link <?= isActiveGroup('/Web-LSP-PPOLRI/admin/admin/'); ?>"
             >
-
                 <i class="bi bi-person-gear"></i>
 
                 <span>
                     Kelola Admin
                 </span>
-
             </a>
 
 
             <!-- Pengaturan -->
 
             <a
-                href="/Web-LSP-PPPOLRI/admin/pengaturan.php"
-                class="sidebar-link"
+                href="/Web-LSP-PPOLRI/admin/pengaturan.php"
+                class="sidebar-link <?= isActiveMenu('/Web-LSP-PPOLRI/admin/pengaturan.php'); ?>"
             >
-
                 <i class="bi bi-gear"></i>
 
                 <span>
                     Pengaturan
                 </span>
-
             </a>
 
         </div>
@@ -252,16 +263,14 @@
     <div class="sidebar-footer">
 
         <a
-            href="/Web-LSP-PPPOLRI/auth/logout.php"
+            href="/Web-LSP-PPOLRI/auth/logout.php"
             class="sidebar-link"
         >
-
             <i class="bi bi-box-arrow-right"></i>
 
             <span>
                 Logout
             </span>
-
         </a>
 
     </div>

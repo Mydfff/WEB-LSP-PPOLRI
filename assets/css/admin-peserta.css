@@ -1,0 +1,2040 @@
+/* =========================================================
+   DATA PESERTA - ADMIN LSP PPPOLRI
+   File: assets/css/admin-peserta.css
+
+   Digunakan oleh:
+   admin/peserta/daftar.php
+   admin/peserta/detail.php
+
+   Catatan:
+   CSS ini hanya mengatur content peserta.
+   Layout utama admin tetap menggunakan admin.css.
+========================================================= */
+
+/* =========================================================
+   1. PAGE CONTENT
+========================================================= */
+
+.peserta-content {
+  flex: 1;
+  padding: 36px 34px 40px;
+  min-width: 0;
+}
+
+/* =========================================================
+   2. PAGE HEADING
+========================================================= */
+
+.peserta-content .page-heading {
+  margin-bottom: 28px;
+}
+
+.peserta-content .page-label {
+  display: block;
+  margin-bottom: 6px;
+
+  color: var(--primary);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+.peserta-content .page-heading h1 {
+  margin: 0;
+
+  color: #101828;
+
+  font-size: 28px;
+  line-height: 1.3;
+
+  font-weight: 600;
+}
+
+.peserta-content .page-heading p {
+  margin: 7px 0 0;
+
+  color: var(--text-medium);
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   3. STATISTICS
+========================================================= */
+
+.peserta-statistics,
+.peserta-detail-statistics {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 20px;
+
+  margin-bottom: 26px;
+}
+
+.peserta-detail-statistics {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* =========================================================
+   4. STAT CARD
+========================================================= */
+
+.peserta-stat-card {
+  min-height: 125px;
+
+  padding: 22px 24px;
+
+  background: #ffffff;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-lg);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.peserta-stat-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow: var(--shadow-md);
+}
+
+.peserta-stat-info {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.peserta-stat-info span {
+  color: var(--text-medium);
+
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.peserta-stat-info strong {
+  margin-top: 5px;
+
+  color: #101828;
+
+  font-size: 27px;
+  line-height: 1.2;
+
+  font-weight: 600;
+}
+
+.peserta-stat-icon {
+  width: 46px;
+  height: 46px;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  background: var(--primary-light);
+
+  color: var(--primary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 19px;
+}
+
+/* =========================================================
+   5. FILTER
+========================================================= */
+
+.peserta-filter {
+  width: 100%;
+
+  margin-bottom: 22px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.peserta-search {
+  position: relative;
+
+  flex: 1;
+
+  min-width: 0;
+}
+
+.peserta-search i {
+  position: absolute;
+
+  left: 15px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: var(--text-light);
+
+  font-size: 15px;
+
+  pointer-events: none;
+}
+
+.peserta-search input {
+  width: 100%;
+  height: 44px;
+
+  padding: 0 15px 0 42px;
+
+  background: #ffffff;
+
+  border: 1px solid var(--border);
+
+  border-radius: 9px;
+
+  outline: none;
+
+  color: var(--text-dark);
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 12px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.peserta-search input::placeholder {
+  color: var(--text-light);
+}
+
+.peserta-search input:focus {
+  border-color: var(--primary);
+
+  box-shadow: 0 0 0 3px rgba(114, 0, 14, 0.08);
+}
+
+/* =========================================================
+   6. FILTER BUTTON
+========================================================= */
+
+.btn-peserta-filter,
+.btn-peserta-reset {
+  height: 44px;
+
+  padding: 0 17px;
+
+  border-radius: 9px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.btn-peserta-filter {
+  border: 1px solid var(--primary);
+
+  background: var(--primary);
+
+  color: #ffffff;
+}
+
+.btn-peserta-filter:hover {
+  background: var(--primary-dark);
+
+  border-color: var(--primary-dark);
+
+  color: #ffffff;
+}
+
+.btn-peserta-reset {
+  border: 1px solid var(--border);
+
+  background: #ffffff;
+
+  color: var(--text-medium);
+}
+
+.btn-peserta-reset:hover {
+  border-color: var(--primary);
+
+  background: var(--primary-light);
+
+  color: var(--primary);
+}
+
+/* =========================================================
+   7. TABLE CARD
+========================================================= */
+
+.peserta-table-card {
+  width: 100%;
+
+  background: #ffffff;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-sm);
+
+  overflow: hidden;
+
+  margin-bottom: 28px;
+}
+
+/* =========================================================
+   8. TABLE HEADER
+========================================================= */
+
+.peserta-table-header {
+  min-height: 82px;
+
+  padding: 20px 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.peserta-table-header .card-label {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: var(--primary);
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.9px;
+}
+
+.peserta-table-header h3 {
+  margin: 0;
+
+  color: #101828;
+
+  font-size: 16px;
+
+  font-weight: 600;
+}
+
+.peserta-table-header > span {
+  color: var(--text-light);
+
+  font-size: 10px;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   9. TABLE WRAPPER
+========================================================= */
+
+.peserta-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+/* =========================================================
+   10. TABLE
+========================================================= */
+
+.peserta-table {
+  width: 100%;
+
+  min-width: 850px;
+
+  border-collapse: collapse;
+
+  margin: 0;
+}
+
+.peserta-table thead {
+  background: #fafafa;
+}
+
+.peserta-table th {
+  padding: 13px 16px;
+
+  color: var(--text-medium);
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  text-align: left;
+
+  white-space: nowrap;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.peserta-table td {
+  padding: 15px 16px;
+
+  color: var(--text-medium);
+
+  font-size: 10px;
+
+  vertical-align: middle;
+
+  border-bottom: 1px solid #f0f1f3;
+}
+
+.peserta-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.peserta-table tbody tr:hover {
+  background: #fcfcfd;
+}
+
+.peserta-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* =========================================================
+   11. TABLE TEXT
+========================================================= */
+
+.peserta-name {
+  display: block;
+
+  color: #101828;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  min-width: 150px;
+}
+
+.peserta-email {
+  color: var(--text-medium);
+
+  font-size: 10px;
+
+  white-space: nowrap;
+}
+
+.peserta-scheme {
+  display: inline-block;
+
+  color: #475467;
+
+  font-size: 9px;
+
+  line-height: 1.5;
+
+  max-width: 190px;
+}
+
+.peserta-registration-number {
+  display: inline-block;
+
+  color: var(--primary);
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   12. STATUS
+========================================================= */
+
+.peserta-status {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 68px;
+
+  padding: 5px 9px;
+
+  border-radius: 50px;
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+  line-height: 1.3;
+
+  white-space: nowrap;
+}
+
+.peserta-status-active {
+  background: var(--success-bg);
+
+  color: var(--success);
+}
+
+.peserta-status-inactive {
+  background: #f2f4f7;
+
+  color: #667085;
+}
+
+.peserta-status-pending {
+  background: var(--warning-bg);
+
+  color: var(--warning);
+}
+
+.peserta-status-verification {
+  background: #eef4ff;
+
+  color: #175cd3;
+}
+
+.peserta-status-approved {
+  background: var(--success-bg);
+
+  color: var(--success);
+}
+
+.peserta-status-rejected {
+  background: var(--primary-light);
+
+  color: var(--primary);
+}
+
+/* =========================================================
+   13. DETAIL BUTTON
+========================================================= */
+
+.btn-peserta-detail {
+  min-height: 32px;
+
+  padding: 6px 11px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: var(--text-medium);
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.btn-peserta-detail:hover {
+  background: var(--primary-light);
+
+  border-color: rgba(114, 0, 14, 0.18);
+
+  color: var(--primary);
+}
+
+.btn-peserta-detail i {
+  font-size: 11px;
+}
+
+/* =========================================================
+   14. EMPTY DATA
+========================================================= */
+
+.peserta-empty {
+  min-height: 280px;
+
+  padding: 40px 25px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.peserta-empty > i {
+  width: 58px;
+  height: 58px;
+
+  margin-bottom: 15px;
+
+  border-radius: 50%;
+
+  background: var(--primary-light);
+
+  color: var(--primary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 24px;
+}
+
+.peserta-empty h4 {
+  margin: 0;
+
+  color: #101828;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.peserta-empty p {
+  max-width: 400px;
+
+  margin: 7px 0 0;
+
+  color: var(--text-medium);
+
+  font-size: 10px;
+
+  line-height: 1.6;
+}
+
+/* =========================================================
+   15. DETAIL NAVIGATION
+========================================================= */
+
+.peserta-detail-navigation {
+  margin-bottom: 20px;
+}
+
+.btn-peserta-back {
+  min-height: 38px;
+
+  padding: 8px 13px;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: var(--text-medium);
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.btn-peserta-back:hover {
+  background: var(--primary-light);
+
+  border-color: rgba(114, 0, 14, 0.18);
+
+  color: var(--primary);
+}
+
+.btn-peserta-back i {
+  font-size: 13px;
+}
+
+/* =========================================================
+   16. PROFILE CARD
+========================================================= */
+
+.peserta-profile-card {
+  width: 100%;
+
+  padding: 25px;
+
+  margin-bottom: 22px;
+
+  background: #ffffff;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-lg);
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.peserta-profile-avatar {
+  width: 68px;
+  height: 68px;
+
+  flex-shrink: 0;
+
+  border-radius: 16px;
+
+  background: var(--primary-light);
+
+  color: var(--primary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 29px;
+}
+
+.peserta-profile-info {
+  min-width: 0;
+
+  flex: 1;
+}
+
+.peserta-profile-info .card-label {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: var(--primary);
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.9px;
+}
+
+.peserta-profile-info h2 {
+  margin: 0;
+
+  color: #101828;
+
+  font-size: 20px;
+
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  word-break: break-word;
+}
+
+.peserta-profile-info p {
+  margin: 5px 0 9px;
+
+  color: var(--text-medium);
+
+  font-size: 10px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+}
+
+.peserta-profile-info p i {
+  color: var(--text-light);
+}
+
+/* =========================================================
+   17. DETAIL CARD
+========================================================= */
+
+.peserta-detail-card {
+  width: 100%;
+
+  margin-bottom: 22px;
+
+  background: #ffffff;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-sm);
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   18. DETAIL CARD HEADER
+========================================================= */
+
+.peserta-detail-card-header {
+  min-height: 76px;
+
+  padding: 18px 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.peserta-detail-card-header .card-label {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: var(--primary);
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.9px;
+}
+
+.peserta-detail-card-header h3 {
+  margin: 0;
+
+  color: #101828;
+
+  font-size: 15px;
+
+  font-weight: 600;
+}
+
+.peserta-detail-card-header > i {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  background: var(--primary-light);
+
+  color: var(--primary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 17px;
+}
+
+/* =========================================================
+   19. DETAIL GRID
+========================================================= */
+
+.peserta-detail-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 0;
+
+  padding: 0 25px;
+}
+
+.peserta-detail-field {
+  min-width: 0;
+
+  padding: 17px 0;
+
+  border-bottom: 1px solid #f0f1f3;
+}
+
+.peserta-detail-field:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+
+.peserta-detail-field:nth-child(odd) {
+  padding-right: 25px;
+}
+
+.peserta-detail-field:nth-child(even) {
+  padding-left: 25px;
+
+  border-left: 1px solid #f0f1f3;
+}
+
+.peserta-detail-field span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--text-light);
+
+  font-size: 9px;
+
+  font-weight: 500;
+}
+
+.peserta-detail-field strong {
+  display: block;
+
+  color: #344054;
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  line-height: 1.6;
+
+  overflow-wrap: anywhere;
+}
+
+.peserta-detail-field-full,
+.peserta-field-full {
+  grid-column: 1 / -1;
+
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  border-left: 0 !important;
+}
+
+.peserta-detail-field:last-child {
+  border-bottom: 0;
+}
+
+/* =========================================================
+   20. DETAIL EMPTY
+========================================================= */
+
+.peserta-detail-empty {
+  min-height: 180px;
+
+  padding: 35px 25px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.peserta-detail-empty > i {
+  margin-bottom: 12px;
+
+  color: var(--text-light);
+
+  font-size: 27px;
+}
+
+.peserta-detail-empty h4 {
+  margin: 0;
+
+  color: #101828;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.peserta-detail-empty p {
+  max-width: 450px;
+
+  margin: 6px 0 0;
+
+  color: var(--text-medium);
+
+  font-size: 10px;
+
+  line-height: 1.6;
+}
+
+/* =========================================================
+   21. RESPONSIVE - LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+  .peserta-content {
+    padding: 32px 28px 36px;
+  }
+
+  .peserta-statistics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+  }
+
+  .peserta-stat-card {
+    padding: 20px;
+  }
+
+  .peserta-table {
+    min-width: 820px;
+  }
+}
+
+/* =========================================================
+   22. RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+  .peserta-content {
+    padding: 30px 24px;
+  }
+
+  .peserta-content .page-heading h1 {
+    font-size: 24px;
+  }
+
+  .peserta-statistics,
+  .peserta-detail-statistics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+  }
+
+  .peserta-stat-card {
+    min-height: 115px;
+  }
+
+  .peserta-filter {
+    flex-wrap: wrap;
+  }
+
+  .peserta-search {
+    flex-basis: 100%;
+    width: 100%;
+  }
+
+  .btn-peserta-filter,
+  .btn-peserta-reset {
+    flex: 0 0 auto;
+  }
+
+  .peserta-profile-card {
+    padding: 22px;
+  }
+
+  .peserta-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .peserta-detail-field,
+  .peserta-detail-field:nth-child(odd),
+  .peserta-detail-field:nth-child(even) {
+    padding-left: 0;
+    padding-right: 0;
+
+    border-left: 0;
+    border-bottom: 1px solid #f0f1f3;
+  }
+
+  .peserta-detail-field:last-child {
+    border-bottom: 0;
+  }
+
+  .peserta-detail-field:nth-last-child(-n + 2) {
+    border-bottom: 1px solid #f0f1f3;
+  }
+
+  .peserta-detail-field:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* =========================================================
+   23. RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+  .peserta-content {
+    padding: 24px 16px 30px;
+  }
+
+  .peserta-content .page-heading {
+    margin-bottom: 22px;
+  }
+
+  .peserta-content .page-heading h1 {
+    font-size: 22px;
+  }
+
+  .peserta-content .page-heading p {
+    font-size: 11px;
+  }
+
+  .peserta-statistics,
+  .peserta-detail-statistics {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+  }
+
+  .peserta-stat-card {
+    min-height: 105px;
+
+    padding: 18px;
+  }
+
+  .peserta-stat-info strong {
+    font-size: 24px;
+  }
+
+  .peserta-stat-icon {
+    width: 42px;
+    height: 42px;
+
+    font-size: 17px;
+  }
+
+  .peserta-filter {
+    gap: 8px;
+
+    margin-bottom: 18px;
+  }
+
+  .peserta-search {
+    flex-basis: 100%;
+  }
+
+  .btn-peserta-filter,
+  .btn-peserta-reset {
+    height: 40px;
+
+    padding: 0 13px;
+
+    font-size: 10px;
+  }
+
+  .peserta-table-card {
+    margin-bottom: 20px;
+
+    border-radius: 12px;
+  }
+
+  .peserta-table-header {
+    min-height: 72px;
+
+    padding: 17px 18px;
+  }
+
+  .peserta-table-header h3 {
+    font-size: 14px;
+  }
+
+  .peserta-table-header > span {
+    font-size: 9px;
+  }
+
+  .peserta-table {
+    min-width: 800px;
+  }
+
+  .peserta-table th {
+    padding: 11px 13px;
+
+    font-size: 8px;
+  }
+
+  .peserta-table td {
+    padding: 13px;
+
+    font-size: 9px;
+  }
+
+  .peserta-name {
+    font-size: 9px;
+  }
+
+  .peserta-email {
+    font-size: 9px;
+  }
+
+  .peserta-scheme {
+    font-size: 8px;
+  }
+
+  .peserta-profile-card {
+    padding: 18px;
+
+    gap: 13px;
+
+    align-items: flex-start;
+  }
+
+  .peserta-profile-avatar {
+    width: 52px;
+    height: 52px;
+
+    border-radius: 13px;
+
+    font-size: 23px;
+  }
+
+  .peserta-profile-info h2 {
+    font-size: 16px;
+  }
+
+  .peserta-profile-info p {
+    font-size: 9px;
+
+    word-break: break-all;
+  }
+
+  .peserta-detail-navigation {
+    margin-bottom: 16px;
+  }
+
+  .btn-peserta-back {
+    font-size: 9px;
+
+    padding: 7px 10px;
+  }
+
+  .peserta-detail-card-header {
+    min-height: 68px;
+
+    padding: 16px 18px;
+  }
+
+  .peserta-detail-card-header h3 {
+    font-size: 13px;
+  }
+
+  .peserta-detail-card-header > i {
+    width: 34px;
+    height: 34px;
+
+    font-size: 15px;
+  }
+
+  .peserta-detail-grid {
+    padding: 0 18px;
+  }
+
+  .peserta-detail-field {
+    padding: 14px 0 !important;
+  }
+
+  .peserta-detail-field span {
+    font-size: 8px;
+  }
+
+  .peserta-detail-field strong {
+    font-size: 9px;
+  }
+
+  .peserta-detail-empty {
+    min-height: 150px;
+
+    padding: 30px 18px;
+  }
+
+  .peserta-detail-empty p {
+    font-size: 9px;
+  }
+}
+
+/* =========================================================
+   24. SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .peserta-content {
+    padding: 22px 14px 28px;
+  }
+
+  .peserta-content .page-heading h1 {
+    font-size: 20px;
+  }
+
+  .peserta-content .page-heading p {
+    font-size: 10px;
+  }
+
+  .peserta-stat-card {
+    min-height: 98px;
+
+    padding: 16px;
+  }
+
+  .peserta-stat-info span {
+    font-size: 10px;
+  }
+
+  .peserta-stat-info strong {
+    font-size: 22px;
+  }
+
+  .peserta-stat-icon {
+    width: 40px;
+    height: 40px;
+
+    font-size: 16px;
+  }
+
+  .peserta-filter {
+    align-items: stretch;
+  }
+
+  .peserta-search input {
+    height: 42px;
+
+    font-size: 10px;
+  }
+
+  .btn-peserta-filter,
+  .btn-peserta-reset {
+    flex: 1;
+
+    height: 40px;
+  }
+
+  .peserta-table-header {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 4px;
+  }
+
+  .peserta-profile-card {
+    align-items: flex-start;
+  }
+
+  .peserta-profile-info h2 {
+    font-size: 15px;
+  }
+
+  .peserta-profile-info p {
+    max-width: 100%;
+
+    overflow-wrap: anywhere;
+  }
+
+  .peserta-detail-card-header {
+    padding: 15px 16px;
+  }
+
+  .peserta-detail-grid {
+    padding: 0 16px;
+  }
+}
+
+/* =========================================================
+   25. FOCUS ACCESSIBILITY
+========================================================= */
+
+.peserta-search input:focus-visible,
+.btn-peserta-filter:focus-visible,
+.btn-peserta-reset:focus-visible,
+.btn-peserta-detail:focus-visible,
+.btn-peserta-back:focus-visible {
+  outline: 2px solid var(--primary);
+
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   26. PRINT
+========================================================= */
+
+@media print {
+  .peserta-detail-navigation,
+  .peserta-filter,
+  .btn-peserta-detail,
+  .btn-peserta-back {
+    display: none !important;
+  }
+
+  .peserta-content {
+    padding: 0;
+  }
+
+  .peserta-table-card,
+  .peserta-detail-card,
+  .peserta-profile-card,
+  .peserta-stat-card {
+    box-shadow: none;
+  }
+}
+
+/* =========================================================
+   27. UPDATE TABLE FONT - DATA PESERTA
+   Memperbesar tulisan agar lebih nyaman dibaca
+========================================================= */
+
+/* Header tabel */
+.peserta-table th {
+  padding: 15px 16px;
+
+  color: #475467;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  text-align: left;
+  white-space: nowrap;
+
+  border-bottom: 1px solid var(--border);
+}
+
+/* Isi tabel */
+.peserta-table td {
+  padding: 17px 16px;
+
+  color: #475467;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  line-height: 1.5;
+
+  vertical-align: middle;
+
+  border-bottom: 1px solid #f0f1f3;
+}
+
+/* Nama peserta */
+.peserta-name {
+  display: block;
+
+  color: #101828;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  min-width: 150px;
+}
+
+/* Email */
+.peserta-email {
+  color: #667085;
+
+  font-size: 11.5px;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+/* Skema */
+.peserta-scheme {
+  display: inline-block;
+
+  color: #475467;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  line-height: 1.6;
+
+  max-width: 230px;
+}
+
+/* Nomor pendaftaran */
+.peserta-registration-number {
+  display: inline-block;
+
+  color: var(--primary);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+/* Status */
+.peserta-status {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 72px;
+
+  padding: 6px 11px;
+
+  border-radius: 50px;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  white-space: nowrap;
+}
+
+/* Tombol detail */
+.btn-peserta-detail {
+  min-height: 36px;
+
+  padding: 7px 12px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #475467;
+
+  font-size: 10.5px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.btn-peserta-detail i {
+  font-size: 12px;
+}
+
+/* Judul card tabel */
+.peserta-table-header .card-label {
+  font-size: 10px;
+}
+
+.peserta-table-header h3 {
+  font-size: 18px;
+}
+
+.peserta-table-header > span {
+  font-size: 11px;
+}
+
+/* =========================================================
+   28. SEARCH & FILTER
+========================================================= */
+
+.peserta-search input {
+  height: 46px;
+
+  font-size: 12px;
+}
+
+.peserta-search i {
+  font-size: 16px;
+}
+
+.btn-peserta-filter,
+.btn-peserta-reset {
+  height: 46px;
+
+  padding: 0 18px;
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   29. TABLE LEBIH LEGA
+========================================================= */
+
+.peserta-table {
+  min-width: 950px;
+}
+
+.peserta-table tbody tr {
+  min-height: 60px;
+}
+
+/* =========================================================
+   30. TABLE - LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+  .peserta-table {
+    min-width: 950px;
+  }
+
+  .peserta-table th {
+    font-size: 11.5px;
+  }
+
+  .peserta-table td {
+    font-size: 11.5px;
+  }
+
+  .peserta-name {
+    font-size: 11.5px;
+  }
+
+  .peserta-email {
+    font-size: 11px;
+  }
+
+  .peserta-scheme {
+    font-size: 10.5px;
+  }
+}
+
+/* =========================================================
+   31. TABLE - TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+  .peserta-table {
+    min-width: 950px;
+  }
+
+  .peserta-table th {
+    padding: 14px;
+    font-size: 11px;
+  }
+
+  .peserta-table td {
+    padding: 16px 14px;
+    font-size: 11px;
+  }
+
+  .peserta-name {
+    font-size: 11px;
+  }
+
+  .peserta-email {
+    font-size: 10.5px;
+  }
+
+  .peserta-scheme {
+    font-size: 10.5px;
+  }
+
+  .peserta-status {
+    font-size: 10px;
+  }
+
+  .btn-peserta-detail {
+    font-size: 10px;
+  }
+}
+
+/* =========================================================
+   32. TABLE - MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+  .peserta-table {
+    min-width: 950px;
+  }
+
+  .peserta-table th {
+    padding: 13px 14px;
+
+    font-size: 10.5px;
+  }
+
+  .peserta-table td {
+    padding: 15px 14px;
+
+    font-size: 10.5px;
+  }
+
+  .peserta-name {
+    font-size: 10.5px;
+  }
+
+  .peserta-email {
+    font-size: 10px;
+  }
+
+  .peserta-scheme {
+    font-size: 10px;
+  }
+
+  .peserta-status {
+    font-size: 9.5px;
+  }
+
+  .btn-peserta-detail {
+    font-size: 9.5px;
+  }
+}
+
+/* =========================================================
+   33. UPDATE FONT DETAIL PESERTA
+   Agar detail.php lebih nyaman dibaca
+========================================================= */
+
+/* =========================================================
+   PROFILE PESERTA
+========================================================= */
+
+.peserta-profile-info .card-label {
+  font-size: 10px;
+}
+
+.peserta-profile-info h2 {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.peserta-profile-info p {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   TOMBOL KEMBALI
+========================================================= */
+
+.btn-peserta-back {
+  min-height: 40px;
+
+  padding: 8px 14px;
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.btn-peserta-back i {
+  font-size: 14px;
+}
+
+/* =========================================================
+   DETAIL CARD HEADER
+========================================================= */
+
+.peserta-detail-card-header {
+  min-height: 82px;
+
+  padding: 20px 25px;
+}
+
+.peserta-detail-card-header .card-label {
+  font-size: 10px;
+
+  margin-bottom: 5px;
+}
+
+.peserta-detail-card-header h3 {
+  font-size: 18px;
+
+  font-weight: 600;
+
+  line-height: 1.4;
+}
+
+.peserta-detail-card-header > i {
+  width: 42px;
+  height: 42px;
+
+  font-size: 18px;
+}
+
+/* =========================================================
+   DETAIL FIELD
+========================================================= */
+
+.peserta-detail-field {
+  padding: 19px 0;
+}
+
+.peserta-detail-field span {
+  margin-bottom: 7px;
+
+  color: #667085;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  line-height: 1.5;
+}
+
+.peserta-detail-field strong {
+  color: #344054;
+
+  font-size: 12.5px;
+
+  font-weight: 500;
+
+  line-height: 1.7;
+}
+
+/* =========================================================
+   DETAIL FIELD - TEKS YANG PANJANG
+========================================================= */
+
+.peserta-detail-field strong {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* =========================================================
+   DETAIL EMPTY
+========================================================= */
+
+.peserta-detail-empty {
+  min-height: 190px;
+
+  padding: 38px 25px;
+}
+
+.peserta-detail-empty > i {
+  margin-bottom: 14px;
+
+  font-size: 29px;
+}
+
+.peserta-detail-empty h4 {
+  font-size: 15px;
+
+  font-weight: 600;
+}
+
+.peserta-detail-empty p {
+  max-width: 500px;
+
+  margin-top: 8px;
+
+  font-size: 11px;
+
+  line-height: 1.7;
+}
+
+/* =========================================================
+   STATISTICS DETAIL
+========================================================= */
+
+.peserta-detail-statistics .peserta-stat-info span {
+  font-size: 12px;
+}
+
+.peserta-detail-statistics .peserta-stat-info strong {
+  font-size: 28px;
+}
+
+/* =========================================================
+   DETAIL - LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+  .peserta-profile-info h2 {
+    font-size: 21px;
+  }
+
+  .peserta-profile-info p {
+    font-size: 11.5px;
+  }
+
+  .peserta-detail-card-header h3 {
+    font-size: 17px;
+  }
+
+  .peserta-detail-field span {
+    font-size: 10.5px;
+  }
+
+  .peserta-detail-field strong {
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+   DETAIL - TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+  .peserta-profile-info h2 {
+    font-size: 20px;
+  }
+
+  .peserta-profile-info p {
+    font-size: 11px;
+  }
+
+  .peserta-detail-card-header {
+    padding: 18px 22px;
+  }
+
+  .peserta-detail-card-header h3 {
+    font-size: 16px;
+  }
+
+  .peserta-detail-field span {
+    font-size: 10.5px;
+  }
+
+  .peserta-detail-field strong {
+    font-size: 12px;
+  }
+
+  .peserta-detail-grid {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+
+/* =========================================================
+   DETAIL - MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+  .peserta-profile-info .card-label {
+    font-size: 9px;
+  }
+
+  .peserta-profile-info h2 {
+    font-size: 18px;
+  }
+
+  .peserta-profile-info p {
+    font-size: 10.5px;
+  }
+
+  .btn-peserta-back {
+    min-height: 38px;
+
+    padding: 7px 12px;
+
+    font-size: 10px;
+  }
+
+  .peserta-detail-card-header {
+    min-height: 72px;
+
+    padding: 17px 18px;
+  }
+
+  .peserta-detail-card-header .card-label {
+    font-size: 9px;
+  }
+
+  .peserta-detail-card-header h3 {
+    font-size: 15px;
+  }
+
+  .peserta-detail-card-header > i {
+    width: 38px;
+    height: 38px;
+
+    font-size: 16px;
+  }
+
+  .peserta-detail-grid {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .peserta-detail-field {
+    padding: 16px 0 !important;
+  }
+
+  .peserta-detail-field span {
+    margin-bottom: 6px;
+
+    font-size: 10px;
+  }
+
+  .peserta-detail-field strong {
+    font-size: 11.5px;
+
+    line-height: 1.7;
+  }
+
+  .peserta-detail-empty h4 {
+    font-size: 14px;
+  }
+
+  .peserta-detail-empty p {
+    font-size: 10px;
+  }
+}
+
+/* =========================================================
+   DETAIL - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .peserta-profile-info h2 {
+    font-size: 17px;
+  }
+
+  .peserta-profile-info p {
+    font-size: 10px;
+  }
+
+  .peserta-detail-card-header {
+    padding: 16px;
+  }
+
+  .peserta-detail-card-header h3 {
+    font-size: 14px;
+  }
+
+  .peserta-detail-grid {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .peserta-detail-field span {
+    font-size: 9.5px;
+  }
+
+  .peserta-detail-field strong {
+    font-size: 11px;
+  }
+}

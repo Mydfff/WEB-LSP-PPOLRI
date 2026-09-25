@@ -1157,3 +1157,36 @@
     width: 100%;
   }
 }
+
+/* ==========================================================
+   PERBESAR TEKS TABEL KELOLA ADMIN
+========================================================== */
+
+.admin-table th {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.admin-table td {
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.admin-table td strong {
+  font-size: 15px;
+}
+
+.admin-table td small {
+  font-size: 13px;
+}
+
+/* Badge status */
+.admin-table .badge {
+  font-size: 12px;
+  padding: 6px 10px;
+}
+
+/* Tombol aksi */
+.admin-table .btn {
+  font-size: 13px;
+}

@@ -1,3 +1,4 @@
+
 <?php
 
 // ==========================================================
@@ -13,10 +14,8 @@ session_start();
 // ==========================================================
 
 if (!isset($_SESSION["admin_id"])) {
-
     header("Location: ../auth/login.php");
     exit;
-
 }
 
 
@@ -44,71 +43,223 @@ $pageSubtitle = "Panel Administrasi LSP PPPOLRI";
 
 
 // ==========================================================
-// DATA SEMENTARA
-// Nanti diganti query MySQL
+// TOTAL BERITA
 // ==========================================================
 
-$totalBerita  = 19;
-$totalGaleri  = 24;
-$totalSkema   = 42;
-$totalPeserta = 125;
+$totalBerita = 0;
 
+try {
 
-// ==========================================================
-// DATA BERITA SEMENTARA
-// ==========================================================
+    $stmtBerita = $pdo->query("
+        SELECT COUNT(*)
+        FROM berita
+    ");
 
-$beritaTerbaru = [
+    $totalBerita = (int) $stmtBerita->fetchColumn();
 
-    [
-        'judul'  => 'LSP PPPOLRI Menyelenggarakan Sertifikasi Digital Forensik',
-        'tanggal' => '28 Juli 2026',
-        'status' => 'Published'
-    ],
+} catch (PDOException $e) {
 
-    [
-        'judul'  => 'Pelaksanaan Sertifikasi Bidang Cyber Security',
-        'tanggal' => '24 Juli 2026',
-        'status' => 'Published'
-    ],
+    $totalBerita = 0;
 
-    [
-        'judul'  => 'Pembukaan Pendaftaran Asesor Kompetensi Tahun 2026',
-        'tanggal' => '20 Juli 2026',
-        'status' => 'Draft'
-    ]
-
-];
+}
 
 
 // ==========================================================
-// AKTIVITAS SEMENTARA
+// TOTAL GALERI
+// ==========================================================
+// Tabel galeri belum tersedia di database.
+// Untuk sementara bernilai 0.
+// Nanti tinggal disambungkan jika tabel galeri sudah dibuat.
 // ==========================================================
 
-$aktivitasTerbaru = [
+$totalGaleri = 0;
 
-    [
-        'icon' => 'bi-newspaper',
-        'judul' => 'Berita baru ditambahkan',
-        'deskripsi' => 'Sertifikasi Digital Forensik 2026',
-        'waktu' => '10 menit lalu'
-    ],
 
-    [
-        'icon' => 'bi-images',
-        'judul' => 'Galeri diperbarui',
-        'deskripsi' => 'Dokumentasi kegiatan asesmen',
-        'waktu' => '1 jam lalu'
-    ],
+// ==========================================================
+// TOTAL SKEMA
+// ==========================================================
 
-    [
-        'icon' => 'bi-person-plus',
-        'judul' => 'Peserta baru mendaftar',
-        'deskripsi' => 'Pendaftaran skema Cyber Security',
-        'waktu' => '2 jam lalu'
-    ]
+$totalSkema = 0;
 
-];
+try {
+
+    $stmtSkema = $pdo->query("
+        SELECT COUNT(*)
+        FROM skema
+        WHERE status = 'aktif'
+    ");
+
+    $totalSkema = (int) $stmtSkema->fetchColumn();
+
+} catch (PDOException $e) {
+
+    $totalSkema = 0;
+
+}
+
+
+// ==========================================================
+// TOTAL PESERTA
+// ==========================================================
+
+$totalPeserta = 0;
+
+try {
+
+    $stmtPeserta = $pdo->query("
+        SELECT COUNT(*)
+        FROM akun_peserta
+    ");
+
+    $totalPeserta = (int) $stmtPeserta->fetchColumn();
+
+} catch (PDOException $e) {
+
+    $totalPeserta = 0;
+
+}
+
+
+// ==========================================================
+// BERITA TERBARU
+// ==========================================================
+
+$beritaTerbaru = [];
+
+try {
+
+    $stmtBeritaTerbaru = $pdo->query("
+        SELECT
+            id,
+            judul,
+            status,
+            created_at
+        FROM berita
+        ORDER BY created_at DESC, id DESC
+        LIMIT 3
+    ");
+
+    $beritaTerbaru =
+        $stmtBeritaTerbaru->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+
+    $beritaTerbaru = [];
+
+}
+
+
+// ==========================================================
+// PENDAFTARAN TERBARU
+// ==========================================================
+
+$pendaftaranTerbaru = [];
+
+try {
+
+    $stmtPendaftaranTerbaru = $pdo->query("
+        SELECT
+            p.id,
+            p.nama_lengkap,
+            p.nomor_pendaftaran,
+            p.created_at,
+            s.nama_skema
+        FROM pendaftaran p
+        LEFT JOIN skema s
+            ON s.id = p.skema_id
+        ORDER BY p.created_at DESC, p.id DESC
+        LIMIT 3
+    ");
+
+    $pendaftaranTerbaru =
+        $stmtPendaftaranTerbaru->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+
+    $pendaftaranTerbaru = [];
+
+}
+
+
+// ==========================================================
+// FORMAT TANGGAL
+// ==========================================================
+
+function formatTanggalDashboard($tanggal)
+{
+    if (empty($tanggal)) {
+        return "-";
+    }
+
+    $timestamp = strtotime($tanggal);
+
+    if ($timestamp === false) {
+        return "-";
+    }
+
+    return date("d M Y", $timestamp);
+}
+
+
+// ==========================================================
+// AKTIVITAS TERBARU
+// ==========================================================
+
+$aktivitasTerbaru = [];
+
+
+// ----------------------------------------------------------
+// AKTIVITAS PENDAFTARAN
+// ----------------------------------------------------------
+
+foreach ($pendaftaranTerbaru as $pendaftaran) {
+
+    $namaPeserta =
+        $pendaftaran["nama_lengkap"]
+        ?? "Peserta";
+
+    $namaSkema =
+        $pendaftaran["nama_skema"]
+        ?? "Skema belum dipilih";
+
+
+    $aktivitasTerbaru[] = [
+
+        "icon" => "bi-person-plus",
+
+        "judul" => "Peserta baru mendaftar",
+
+        "deskripsi" =>
+            $namaPeserta
+            . " - "
+            . $namaSkema,
+
+        "waktu" =>
+            formatTanggalDashboard(
+                $pendaftaran["created_at"]
+            )
+    ];
+}
+
+
+// ----------------------------------------------------------
+// JIKA BELUM ADA PENDAFTARAN
+// ----------------------------------------------------------
+
+if (empty($aktivitasTerbaru)) {
+
+    $aktivitasTerbaru[] = [
+
+        "icon" => "bi-info-circle",
+
+        "judul" => "Belum ada aktivitas",
+
+        "deskripsi" =>
+            "Belum terdapat pendaftaran terbaru.",
+
+        "waktu" => "-"
+    ];
+}
 
 ?>
 
@@ -130,21 +281,30 @@ $aktivitasTerbaru = [
     </title>
 
 
-    <!-- Bootstrap -->
+    <!-- =====================================================
+         BOOTSTRAP
+    ====================================================== -->
+
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
         rel="stylesheet"
     >
 
 
-    <!-- Bootstrap Icons -->
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+    ====================================================== -->
+
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
         rel="stylesheet"
     >
 
 
-    <!-- Google Font -->
+    <!-- =====================================================
+         GOOGLE FONT
+    ====================================================== -->
+
     <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
@@ -162,7 +322,10 @@ $aktivitasTerbaru = [
     >
 
 
-    <!-- Admin CSS -->
+    <!-- =====================================================
+         ADMIN CSS
+    ====================================================== -->
+
     <link
         rel="stylesheet"
         href="../assets/css/admin.css"
@@ -216,13 +379,22 @@ $aktivitasTerbaru = [
                 </span>
 
                 <h1>
+
                     Selamat Datang,
-                    <?php echo htmlspecialchars($adminNama); ?>
+
+                    <?= htmlspecialchars(
+                        $adminNama,
+                        ENT_QUOTES,
+                        "UTF-8"
+                    ); ?>
+
                 </h1>
 
                 <p>
+
                     Kelola informasi dan konten website
                     LSP PPPOLRI melalui dashboard administrasi.
+
                 </p>
 
             </section>
@@ -235,7 +407,10 @@ $aktivitasTerbaru = [
             <section class="dashboard-statistics">
 
 
-                <!-- Total Berita -->
+                <!-- =================================================
+                     TOTAL BERITA
+                ================================================== -->
+
                 <div class="stat-card">
 
                     <div class="stat-content">
@@ -245,7 +420,9 @@ $aktivitasTerbaru = [
                         </span>
 
                         <strong class="stat-number">
-                            <?php echo $totalBerita; ?>
+
+                            <?= $totalBerita; ?>
+
                         </strong>
 
                         <span class="stat-description">
@@ -254,14 +431,20 @@ $aktivitasTerbaru = [
 
                     </div>
 
+
                     <div class="stat-icon stat-icon-news">
+
                         <i class="bi bi-newspaper"></i>
+
                     </div>
 
                 </div>
 
 
-                <!-- Total Galeri -->
+                <!-- =================================================
+                     TOTAL GALERI
+                ================================================== -->
+
                 <div class="stat-card">
 
                     <div class="stat-content">
@@ -271,7 +454,9 @@ $aktivitasTerbaru = [
                         </span>
 
                         <strong class="stat-number">
-                            <?php echo $totalGaleri; ?>
+
+                            <?= $totalGaleri; ?>
+
                         </strong>
 
                         <span class="stat-description">
@@ -280,14 +465,20 @@ $aktivitasTerbaru = [
 
                     </div>
 
+
                     <div class="stat-icon stat-icon-gallery">
+
                         <i class="bi bi-images"></i>
+
                     </div>
 
                 </div>
 
 
-                <!-- Total Skema -->
+                <!-- =================================================
+                     TOTAL SKEMA
+                ================================================== -->
+
                 <div class="stat-card">
 
                     <div class="stat-content">
@@ -297,23 +488,31 @@ $aktivitasTerbaru = [
                         </span>
 
                         <strong class="stat-number">
-                            <?php echo $totalSkema; ?>
+
+                            <?= $totalSkema; ?>
+
                         </strong>
 
                         <span class="stat-description">
-                            Skema sertifikasi
+                            Skema sertifikasi aktif
                         </span>
 
                     </div>
 
+
                     <div class="stat-icon stat-icon-scheme">
+
                         <i class="bi bi-award"></i>
+
                     </div>
 
                 </div>
 
 
-                <!-- Total Peserta -->
+                <!-- =================================================
+                     TOTAL PESERTA
+                ================================================== -->
+
                 <div class="stat-card">
 
                     <div class="stat-content">
@@ -323,7 +522,9 @@ $aktivitasTerbaru = [
                         </span>
 
                         <strong class="stat-number">
-                            <?php echo $totalPeserta; ?>
+
+                            <?= $totalPeserta; ?>
+
                         </strong>
 
                         <span class="stat-description">
@@ -332,11 +533,15 @@ $aktivitasTerbaru = [
 
                     </div>
 
+
                     <div class="stat-icon stat-icon-users">
+
                         <i class="bi bi-people"></i>
+
                     </div>
 
                 </div>
+
 
             </section>
 
@@ -354,6 +559,7 @@ $aktivitasTerbaru = [
 
                 <div class="dashboard-card news-admin-card">
 
+
                     <div class="dashboard-card-header">
 
                         <div>
@@ -368,12 +574,16 @@ $aktivitasTerbaru = [
 
                         </div>
 
+
                         <a
                             href="berita/daftar.php"
                             class="card-action"
                         >
+
                             Kelola Berita
+
                             <i class="bi bi-arrow-right"></i>
+
                         </a>
 
                     </div>
@@ -381,56 +591,110 @@ $aktivitasTerbaru = [
 
                     <div class="news-admin-list">
 
-                        <?php foreach ($beritaTerbaru as $berita): ?>
+
+                        <?php if (!empty($beritaTerbaru)): ?>
+
+
+                            <?php foreach ($beritaTerbaru as $berita): ?>
+
+
+                                <div class="news-admin-item">
+
+
+                                    <div class="news-admin-icon">
+
+                                        <i class="bi bi-newspaper"></i>
+
+                                    </div>
+
+
+                                    <div class="news-admin-info">
+
+
+                                        <h4>
+
+                                            <?= htmlspecialchars(
+                                                $berita["judul"],
+                                                ENT_QUOTES,
+                                                "UTF-8"
+                                            ); ?>
+
+                                        </h4>
+
+
+                                        <span>
+
+                                            <i class="bi bi-calendar3"></i>
+
+                                            <?= formatTanggalDashboard(
+                                                $berita["created_at"]
+                                            ); ?>
+
+                                        </span>
+
+
+                                    </div>
+
+
+                                    <span
+                                        class="status-badge
+                                        <?= strtolower(
+                                            htmlspecialchars(
+                                                $berita["status"],
+                                                ENT_QUOTES,
+                                                "UTF-8"
+                                            )
+                                        ); ?>"
+                                    >
+
+                                        <?= htmlspecialchars(
+                                            ucfirst(
+                                                $berita["status"]
+                                            ),
+                                            ENT_QUOTES,
+                                            "UTF-8"
+                                        ); ?>
+
+                                    </span>
+
+
+                                </div>
+
+
+                            <?php endforeach; ?>
+
+
+                        <?php else: ?>
+
 
                             <div class="news-admin-item">
 
+
                                 <div class="news-admin-icon">
+
                                     <i class="bi bi-newspaper"></i>
+
                                 </div>
+
 
                                 <div class="news-admin-info">
 
                                     <h4>
-                                        <?php
-                                        echo htmlspecialchars(
-                                            $berita['judul']
-                                        );
-                                        ?>
+                                        Belum ada berita
                                     </h4>
 
                                     <span>
-
-                                        <i class="bi bi-calendar3"></i>
-
-                                        <?php
-                                        echo htmlspecialchars(
-                                            $berita['tanggal']
-                                        );
-                                        ?>
-
+                                        Belum terdapat data berita.
                                     </span>
 
                                 </div>
 
-                                <span
-                                    class="status-badge
-                                    <?php
-                                    echo strtolower(
-                                        $berita['status']
-                                    );
-                                    ?>"
-                                >
-                                    <?php
-                                    echo htmlspecialchars(
-                                        $berita['status']
-                                    );
-                                    ?>
-                                </span>
 
                             </div>
 
-                        <?php endforeach; ?>
+
+                        <?php endif; ?>
+
 
                     </div>
 
@@ -442,6 +706,7 @@ $aktivitasTerbaru = [
                 ================================================== -->
 
                 <div class="dashboard-card activity-card">
+
 
                     <div class="dashboard-card-header">
 
@@ -462,57 +727,75 @@ $aktivitasTerbaru = [
 
                     <div class="activity-list">
 
+
                         <?php foreach ($aktivitasTerbaru as $aktivitas): ?>
 
+
                             <div class="activity-item">
+
 
                                 <div class="activity-icon">
 
                                     <i
-                                        class="bi <?php
-                                        echo htmlspecialchars(
-                                            $aktivitas['icon']
-                                        );
-                                        ?>"
+                                        class="bi <?= htmlspecialchars(
+                                            $aktivitas["icon"],
+                                            ENT_QUOTES,
+                                            "UTF-8"
+                                        ); ?>"
                                     ></i>
 
                                 </div>
 
+
                                 <div class="activity-content">
 
+
                                     <strong>
-                                        <?php
-                                        echo htmlspecialchars(
-                                            $aktivitas['judul']
-                                        );
-                                        ?>
+
+                                        <?= htmlspecialchars(
+                                            $aktivitas["judul"],
+                                            ENT_QUOTES,
+                                            "UTF-8"
+                                        ); ?>
+
                                     </strong>
 
+
                                     <span>
-                                        <?php
-                                        echo htmlspecialchars(
-                                            $aktivitas['deskripsi']
-                                        );
-                                        ?>
+
+                                        <?= htmlspecialchars(
+                                            $aktivitas["deskripsi"],
+                                            ENT_QUOTES,
+                                            "UTF-8"
+                                        ); ?>
+
                                     </span>
 
+
                                     <small>
-                                        <?php
-                                        echo htmlspecialchars(
-                                            $aktivitas['waktu']
-                                        );
-                                        ?>
+
+                                        <?= htmlspecialchars(
+                                            $aktivitas["waktu"],
+                                            ENT_QUOTES,
+                                            "UTF-8"
+                                        ); ?>
+
                                     </small>
+
 
                                 </div>
 
+
                             </div>
 
+
                         <?php endforeach; ?>
+
 
                     </div>
 
                 </div>
+
 
             </section>
 
@@ -522,6 +805,7 @@ $aktivitasTerbaru = [
             ================================================== -->
 
             <section class="dashboard-card quick-access-card">
+
 
                 <div class="dashboard-card-header">
 
@@ -543,42 +827,55 @@ $aktivitasTerbaru = [
                 <div class="quick-access-grid">
 
 
-                    <!-- Tambah Berita -->
+                    <!-- =================================================
+                         BERITA
+                    ================================================== -->
+
                     <a
-                        href="berita/tambah.php"
+                        href="berita/daftar.php"
                         class="quick-access-item"
                     >
 
                         <div class="quick-access-icon">
-                            <i class="bi bi-plus-lg"></i>
+
+                            <i class="bi bi-newspaper"></i>
+
                         </div>
+
 
                         <div>
 
                             <strong>
-                                Tambah Berita
+                                Kelola Berita
                             </strong>
 
                             <span>
-                                Publikasikan berita baru
+                                Kelola konten berita
                             </span>
 
                         </div>
+
 
                         <i class="bi bi-arrow-right"></i>
 
                     </a>
 
 
-                    <!-- Galeri -->
+                    <!-- =================================================
+                         GALERI
+                    ================================================== -->
+
                     <a
-                        href="galeri/"
+                        href="galeri/daftar.php"
                         class="quick-access-item"
                     >
 
                         <div class="quick-access-icon">
+
                             <i class="bi bi-images"></i>
+
                         </div>
+
 
                         <div>
 
@@ -587,25 +884,32 @@ $aktivitasTerbaru = [
                             </strong>
 
                             <span>
-                                Upload dokumentasi
+                                Kelola dokumentasi
                             </span>
 
                         </div>
+
 
                         <i class="bi bi-arrow-right"></i>
 
                     </a>
 
 
-                    <!-- Skema -->
+                    <!-- =================================================
+                         SKEMA
+                    ================================================== -->
+
                     <a
-                        href="skema/"
+                        href="skema/daftar.php"
                         class="quick-access-item"
                     >
 
                         <div class="quick-access-icon">
+
                             <i class="bi bi-award"></i>
+
                         </div>
+
 
                         <div>
 
@@ -619,20 +923,27 @@ $aktivitasTerbaru = [
 
                         </div>
 
+
                         <i class="bi bi-arrow-right"></i>
 
                     </a>
 
 
-                    <!-- Peserta -->
+                    <!-- =================================================
+                         PESERTA
+                    ================================================== -->
+
                     <a
-                        href="peserta/"
+                        href="peserta/daftar.php"
                         class="quick-access-item"
                     >
 
                         <div class="quick-access-icon">
+
                             <i class="bi bi-people"></i>
+
                         </div>
+
 
                         <div>
 
@@ -646,13 +957,16 @@ $aktivitasTerbaru = [
 
                         </div>
 
+
                         <i class="bi bi-arrow-right"></i>
 
                     </a>
 
+
                 </div>
 
             </section>
+
 
         </main>
 
